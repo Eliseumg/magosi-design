@@ -384,7 +384,7 @@ p { margin: 0; }
       <li><a href="#habilidades">Habilidades</a></li>
     </ul>
     <a class="btn lang" href="/" hreflang="en" lang="en" aria-label="English version">EN</a>
-    <a class="btn resume-link" href="/Eliseu-Martins-Senior-Art-Director-Resume.pdf" target="_blank" rel="noopener">Currículo (PDF)</a>
+    <a class="btn resume-link" href="/Eliseu-Martins-Diretor-de-Arte-Curriculo.pdf" target="_blank" rel="noopener">Currículo (PDF)</a>
     <a class="btn primary" href="#contato">Contato</a>
   </div>
 </header>
@@ -499,7 +499,7 @@ const CONTACT = {
   whatsapp: "5562993439889",
   whatsappMessage: "Oi, Eliseu! Vi seu portfólio e queria conversar sobre um trabalho.",
   telegram: "eliseumgs",
-  resume: "/Eliseu-Martins-Senior-Art-Director-Resume.pdf",
+  resume: "/Eliseu-Martins-Diretor-de-Arte-Curriculo.pdf",
   email: "eliseum.g.silva@gmail.com",
   linkedin: "https://www.linkedin.com/in/eliseu-martins/",
   behance: "https://www.behance.net/eliseumartins",
@@ -942,7 +942,7 @@ const TG_ICON = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
   }
   if (CONTACT.linkedin) L.push(`<a class="btn" href="${esc(CONTACT.linkedin)}" target="_blank" rel="noopener">${IN_ICON}LinkedIn</a>`);
   if (CONTACT.behance) L.push(`<a class="btn" href="${esc(CONTACT.behance)}" target="_blank" rel="noopener">Behance</a>`);
-  if (CONTACT.resume) L.push(`<a class="btn" href="${esc(CONTACT.resume)}" target="_blank" rel="noopener">Currículo (PDF, em inglês)</a>`);
+  if (CONTACT.resume) L.push(`<a class="btn" href="${esc(CONTACT.resume)}" target="_blank" rel="noopener">Currículo (PDF)</a>`);
   document.getElementById("contact-links").innerHTML = L.join("");
   const copyBtn = document.getElementById("copy-email");
   if (copyBtn) copyBtn.addEventListener("click", () => {
