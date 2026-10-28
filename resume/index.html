@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Eliseu Martins Resume</title>
+<meta name="description" content="Resume of Eliseu Martins, Senior Art Director at Magosi Design. 12+ years in design and marketing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300..800&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+/* Same identity as the portfolio: navy marble, Magosi mark, Urbanist + Instrument Serif, process yellow.
+   Layout: hero with name and facts, brand belt, ice-white experience timeline, skills grid, contact. */
+:root {
+  color-scheme: dark;
+  --bg: #232F42; --bg-2: #2C3A50; --line: rgba(232, 237, 245, .14);
+  --fg: #EEF1F6; --muted: #A6B1C3; --accent: #FFD23F; --accent-ink: #1C1704;
+  --shadow: rgba(10, 16, 28, .55);
+  --sans: "Urbanist", "Helvetica Neue", Arial, sans-serif;
+  --serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --step--1: .8125rem; --step-0: 1rem; --step-1: 1.1875rem;
+  --step-2: clamp(1.5rem, 1.2rem + 1.2vw, 2.125rem);
+  --step-3: clamp(2rem, 1.4rem + 2.6vw, 3.5rem);
+  --step-4: clamp(2.8rem, 1.6rem + 5vw, 6rem);
+  --gut: 16px;
+}
+@media (min-width: 900px) { :root { --gut: 40px; } }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--sans); font-size: var(--step-0); line-height: 1.55; font-weight: 450; -webkit-font-smoothing: antialiased; }
+.marble { position: fixed; inset: 0; z-index: -1; background: var(--bg) url(/assets/marble.webp) center / cover no-repeat; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+h1, h2, h3 { margin: 0; text-wrap: balance; font-weight: 650; letter-spacing: -.02em; line-height: 1.05; }
+p { margin: 0; }
+.wrap { max-width: 1240px; margin: 0 auto; padding-left: max(var(--gut), env(safe-area-inset-left, 0px)); padding-right: max(var(--gut), env(safe-area-inset-right, 0px)); }
+.serif { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -.01em; }
+.magosi { display: block; color: currentColor; }
+
+.btn { display: inline-flex; align-items: center; gap: .55em; min-height: 44px; padding: .7em 1.25em; border-radius: 999px; font: 650 var(--step-0)/1 var(--sans); text-decoration: none; border: 1px solid var(--line); background: transparent; color: var(--fg); cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+.btn:hover { border-color: var(--fg); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.btn.primary:hover { background: var(--fg); border-color: var(--fg); }
+.btn.alt { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.btn.copied { border-color: var(--accent); color: var(--accent); }
+.btn svg { width: 20px; height: 20px; flex: none; }
+
+/* Nav */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+.nav .wrap { display: flex; align-items: center; gap: 24px; min-height: 72px; }
+.brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+.brand .magosi { width: 112px; height: 38px; }
+.brand span { padding-left: 14px; border-left: 1px solid var(--line); font-weight: 600; line-height: 1.2; }
+.brand small { display: block; font-weight: 400; color: var(--muted); font-size: var(--step--1); }
+.nav ul { display: flex; gap: 26px; list-style: none; margin: 0 0 0 auto; padding: 0; }
+.nav ul a { text-decoration: none; color: var(--muted); }
+.nav ul a:hover { color: var(--fg); }
+.nav .btn { min-height: 40px; padding: .55em 1.1em; }
+@media (max-width: 860px) { .nav ul { display: none; } .nav .btn { margin-left: auto; } }
+@media (max-width: 480px) { .brand span { display: none; } }
+
+/* Hero */
+.hero .wrap { display: grid; gap: 40px; padding-block: 64px 56px; }
+@media (min-width: 960px) { .hero .wrap { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 64px; align-items: end; padding-block: 88px 72px; } }
+.hero-l { display: grid; gap: 18px; min-width: 0; }
+.kicker { color: var(--muted); font-size: var(--step--1); letter-spacing: .02em; }
+.hero h1 { font-size: var(--step-4); letter-spacing: -.035em; line-height: .95; }
+.hero .role { font-family: var(--serif); font-style: italic; font-size: var(--step-3); line-height: 1.05; color: var(--fg); }
+.facts { display: flex; flex-wrap: wrap; gap: 14px 34px; margin-top: 10px; }
+.facts div { display: grid; gap: 2px; }
+.facts b { font-size: var(--step-2); font-weight: 650; color: var(--accent); font-variant-numeric: tabular-nums; }
+.facts span { color: var(--muted); font-size: var(--step--1); }
+.hero-r { display: grid; gap: 22px; min-width: 0; }
+.hero-r p { font-size: var(--step-1); color: color-mix(in srgb, var(--fg) 86%, var(--bg)); max-width: 34em; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; }
+
+/* Brands */
+.brands { border-block: 1px solid var(--line); background: color-mix(in srgb, var(--bg) 55%, transparent); }
+.brands .wrap { display: grid; gap: 16px; padding-block: 26px; }
+.belt { overflow: hidden; -webkit-mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent); mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent); }
+.belt-track { display: flex; align-items: center; width: max-content; animation: scroll-left 70s linear infinite; }
+.belt:hover .belt-track { animation-play-state: paused; }
+.logo { flex: none; margin-right: 64px; height: var(--h, 38px); aspect-ratio: var(--r); background: var(--fg); opacity: .78; -webkit-mask: var(--m) center / contain no-repeat; mask: var(--m) center / contain no-repeat; }
+@keyframes scroll-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .belt-track { animation: none; } }
+@media (max-width: 620px) { .logo { --h: 28px !important; margin-right: 44px; } }
+
+/* Sections */
+.section .wrap { padding-block: 84px; }
+.section-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 40px; }
+.section-head h2 { font-size: var(--step-3); }
+.light { --bg: #F1F3F6; --bg-2: #E2E7EE; --fg: #1D2738; --muted: #5A6578; --line: rgba(29, 39, 56, .14); background: var(--bg); color: var(--fg); }
+
+/* Experience timeline: dates column, line with markers, role details */
+.timeline { list-style: none; margin: 0; padding: 0; display: grid; }
+.job { display: grid; grid-template-columns: 200px 28px minmax(0, 1fr); column-gap: 18px; }
+.job .when { padding-top: 26px; color: var(--muted); font-size: .9375rem; font-variant-numeric: tabular-nums; text-align: right; }
+.job .rail { position: relative; }
+.job .rail::before { content: ""; position: absolute; left: 13px; top: 0; bottom: 0; width: 2px; background: var(--line); }
+.job .rail::after { content: ""; position: absolute; left: 7px; top: 30px; width: 14px; height: 14px; border-radius: 50%; background: var(--bg); border: 3px solid #E9B800; }
+.job:first-child .rail::before { top: 30px; }
+.job:last-child .rail::before { bottom: auto; height: 30px; }
+.job .body { padding-block: 22px 26px; border-bottom: 1px solid var(--line); display: grid; gap: 8px; min-width: 0; }
+.job:last-child .body { border-bottom: 0; }
+.job h3 { font-size: var(--step-2); }
+.job .org { color: var(--muted); }
+.job ul { margin: 6px 0 0; padding-left: 18px; display: grid; gap: 6px; max-width: 46rem; }
+.job li::marker { color: #C99A00; }
+@media (max-width: 700px) {
+  .job { grid-template-columns: 22px minmax(0, 1fr); column-gap: 14px; }
+  .job .when { grid-column: 2; grid-row: 1; text-align: left; padding-top: 22px; }
+  .job .rail { grid-column: 1; grid-row: 1 / span 2; }
+  .job .rail::before { left: 10px; } .job .rail::after { left: 4px; top: 26px; }
+  .job .body { grid-column: 2; padding-top: 4px; }
+}
+
+/* Skills */
+.caps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; }
+@media (max-width: 980px) { .caps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .caps { grid-template-columns: 1fr; } }
+.caps div { display: grid; align-content: start; gap: 10px; border-top: 2px solid var(--accent); padding-top: 18px; min-width: 0; }
+.caps h3 { font-size: var(--step-1); }
+.caps p { color: var(--muted); }
+.edu { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; margin-top: 56px; }
+@media (max-width: 700px) { .edu { grid-template-columns: 1fr; } }
+.edu div { display: grid; gap: 8px; padding: 26px; border: 1px solid var(--line); border-radius: 6px; background: color-mix(in srgb, var(--bg-2) 55%, transparent); }
+.edu h3 { font-size: var(--step-1); }
+.edu p { color: var(--muted); }
+.edu .big { font-family: var(--serif); font-style: italic; font-size: var(--step-2); color: var(--fg); line-height: 1.1; }
+
+/* Contact */
+.contact { border-top: 1px solid var(--line); }
+.contact .wrap { padding-block: 88px 40px; display: grid; gap: 26px; }
+.contact h2 { font-size: var(--step-3); max-width: 16em; }
+.contact p { color: var(--muted); font-size: var(--step-1); max-width: 36em; }
+.contact-links { display: flex; flex-wrap: wrap; gap: 12px; }
+.foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-top: 56px; padding-top: 22px; border-top: 1px solid var(--line); color: var(--muted); font-size: var(--step--1); }
+.foot .magosi { width: 120px; height: 40px; color: var(--fg); }
+.foot a { color: var(--fg); }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="magosi" viewBox="326 310 1249 415"> <defs><g><g id="mg-0-0"><path d="M 49.859375 -64.5625 L 45.46875 -64.5625 L 45.46875 -34.53125 C 41.609375 -41.0625 34.609375 -44.921875 26.546875 -44.921875 C 14.53125 -44.921875 4.390625 -35.875 4.390625 -21.96875 C 4.390625 -7.984375 14.53125 0.984375 26.546875 0.984375 C 34.609375 0.984375 41.609375 -2.875 45.46875 -9.421875 L 45.46875 0 L 49.859375 0 Z M 27.078125 -2.953125 C 17.03125 -2.953125 8.703125 -10.21875 8.703125 -21.96875 C 8.703125 -33.625 17.03125 -40.984375 27.078125 -40.984375 C 36.5 -40.984375 45.46875 -33.625 45.46875 -21.96875 C 45.46875 -10.21875 36.5 -2.953125 27.078125 -2.953125 Z M 27.078125 -2.953125 "/></g><g id="mg-0-1"><path d="M 48.421875 -23.140625 C 47.96875 -36.140625 39.09375 -44.921875 27.078125 -44.921875 C 15.25 -44.921875 4.390625 -36.046875 4.390625 -21.796875 C 4.390625 -7.625 15.328125 0.984375 26.546875 0.984375 C 36.59375 0.984375 44.125 -3.953125 47.4375 -13.1875 L 43.578125 -14.078125 C 40.4375 -6.28125 34.171875 -2.875 26.546875 -2.875 C 17.75 -2.875 8.875 -9.78125 8.703125 -21.515625 L 48.421875 -21.515625 Z M 27.078125 -40.984375 C 35.953125 -40.984375 42.953125 -35.15625 44.03125 -24.921875 L 8.875 -24.921875 C 10.140625 -35.0625 18.734375 -40.984375 27.078125 -40.984375 Z M 27.078125 -40.984375 "/></g><g id="mg-0-2"><path d="M 4.84375 -12.015625 C 6.015625 -3.765625 13.453125 0.984375 23.765625 0.984375 C 33.8125 0.984375 40.71875 -3.765625 40.71875 -11.921875 C 40.71875 -18.921875 35.234375 -21.515625 29.5 -22.859375 L 18.921875 -25.203125 C 14.171875 -26.28125 10.84375 -27.984375 10.84375 -32.546875 C 10.84375 -37.84375 15.421875 -41.25 22.421875 -41.25 C 29.6875 -41.25 34.53125 -37.578125 35.6875 -32.015625 L 39.71875 -33.09375 C 38.109375 -39.90625 32.109375 -44.921875 22.5 -44.921875 C 13 -44.921875 6.453125 -39.8125 6.453125 -32.28125 C 6.453125 -26.359375 10.3125 -23.140625 17.3125 -21.609375 L 28.0625 -19.28125 C 32.8125 -18.203125 36.40625 -16.3125 36.40625 -11.65625 C 36.40625 -6.015625 31.390625 -2.6875 24.03125 -2.6875 C 15.875 -2.6875 9.78125 -6.546875 9.140625 -13.09375 Z M 4.84375 -12.015625 "/></g><g id="mg-0-3"><path d="M 11.65625 -60.625 C 9.59375 -60.625 8.15625 -59.09375 8.15625 -57.203125 C 8.15625 -55.328125 9.59375 -53.890625 11.65625 -53.890625 C 13.625 -53.890625 15.0625 -55.328125 15.0625 -57.203125 C 15.0625 -59.09375 13.625 -60.625 11.65625 -60.625 Z M 13.8125 0 L 13.8125 -43.84375 L 9.5 -43.84375 L 9.5 0 Z M 13.8125 0 "/></g><g id="mg-0-4"><path d="M 48.421875 -43.84375 L 44.125 -43.84375 L 44.125 -35.515625 C 40.53125 -41.421875 34.171875 -44.828125 26.1875 -44.828125 C 14.4375 -44.828125 4.390625 -36.40625 4.390625 -23.765625 C 4.390625 -11.03125 14.4375 -2.515625 26.1875 -2.515625 C 34.171875 -2.515625 40.53125 -6.015625 44.125 -11.921875 L 44.125 -3.59375 C 44.03125 6.453125 37.21875 13 27.078125 13 C 17.578125 13 12.28125 9.0625 9.328125 2.421875 L 5.46875 4.75 C 8.703125 12.375 15.78125 17.03125 27.078125 17.03125 C 39.8125 17.03125 48.328125 9.234375 48.421875 -3.140625 Z M 26.71875 -6.359375 C 16.859375 -6.359375 8.609375 -13.09375 8.609375 -23.765625 C 8.609375 -34.34375 16.859375 -40.984375 26.71875 -40.984375 C 35.875 -40.984375 44.125 -34.34375 44.125 -23.765625 C 44.125 -13.09375 35.875 -6.359375 26.71875 -6.359375 Z M 26.71875 -6.359375 "/></g><g id="mg-0-5"><path d="M 31.03125 -44.921875 C 22.6875 -44.921875 16.40625 -41.0625 13 -34.53125 L 13 -43.84375 L 8.609375 -43.84375 L 8.609375 0 L 13 0 L 13 -21.96875 C 13 -33.71875 20 -40.796875 30.484375 -40.796875 C 38.734375 -40.796875 44.296875 -34.703125 44.296875 -25.46875 L 44.296875 0 L 48.6875 0 L 48.6875 -26.09375 C 48.6875 -37.296875 41.609375 -44.921875 31.03125 -44.921875 Z M 31.03125 -44.921875 "/></g></g></defs><path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 332.46875 593.808594 L 332.46875 587.167969 L 363.601562 573.050781 L 363.601562 431.078125 L 333.296875 425.269531 L 333.296875 419.039062 L 378.132812 402.851562 L 391 402.851562 L 391 427.757812 C 404.835938 420.84375 416.460938 414.960938 425.871094 410.117188 C 435.277344 405.277344 444.273438 402.851562 452.855469 402.851562 C 462.539062 402.851562 471.328125 405.070312 479.214844 409.492188 C 487.101562 413.921875 492.980469 420.148438 496.859375 428.171875 C 512.355469 420.980469 525.566406 414.960938 536.503906 410.117188 C 547.433594 405.277344 556.222656 402.851562 562.863281 402.851562 C 571.164062 402.851562 579.117188 404.71875 586.734375 408.453125 C 594.339844 412.191406 600.566406 417.585938 605.414062 424.644531 C 610.253906 431.703125 612.679688 440.210938 612.679688 450.175781 L 612.679688 573.050781 L 643.8125 587.167969 L 643.8125 593.808594 L 574.484375 593.808594 L 574.484375 587.167969 L 585.28125 573.050781 L 585.28125 460.96875 C 585.28125 454.882812 583.824219 449.28125 580.921875 444.15625 C 578.015625 439.039062 573.792969 434.816406 568.257812 431.496094 C 562.71875 428.171875 555.941406 426.511719 547.917969 426.511719 C 541.828125 426.511719 534.90625 427.621094 527.160156 429.832031 C 519.410156 432.050781 510.558594 435.09375 500.59375 438.964844 C 501.144531 440.625 501.488281 442.359375 501.632812 444.15625 C 501.769531 445.957031 501.839844 447.960938 501.839844 450.175781 L 501.839844 573.050781 L 532.558594 587.167969 L 532.558594 593.808594 L 463.648438 593.808594 L 463.648438 587.167969 L 474.441406 573.050781 L 474.441406 460.96875 C 474.441406 454.882812 473.054688 449.28125 470.289062 444.15625 C 467.519531 439.039062 463.503906 434.816406 458.25 431.496094 C 452.988281 428.171875 446.484375 426.511719 438.738281 426.511719 C 431.269531 426.511719 424.003906 427.484375 416.945312 429.417969 C 409.890625 431.359375 401.234375 434.398438 391 438.550781 L 391 573.050781 L 421.71875 587.167969 L 421.71875 593.808594 Z M 332.46875 593.808594 "/><path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 727.667969 577.203125 C 733.480469 577.203125 739.773438 576.238281 746.554688 574.296875 C 753.335938 572.363281 761.148438 569.179688 770.011719 564.75 L 770.011719 514.105469 C 766.410156 513.554688 761.292969 513 754.648438 512.445312 C 748.007812 511.894531 740.808594 511.613281 733.0625 511.613281 C 721.164062 511.613281 711.199219 514.382812 703.175781 519.914062 C 695.144531 525.457031 691.136719 533.480469 691.136719 543.992188 C 691.136719 555.894531 695.007812 564.40625 702.761719 569.523438 C 710.503906 574.648438 718.808594 577.203125 727.667969 577.203125 M 717.289062 597.960938 C 707.878906 597.960938 699.296875 596.089844 691.550781 592.355469 C 683.800781 588.621094 677.644531 583.429688 673.078125 576.789062 C 668.511719 570.148438 666.230469 562.675781 666.230469 554.371094 C 666.230469 543.859375 670.515625 534.101562 679.097656 525.105469 C 687.671875 516.117188 699.785156 508.707031 715.421875 502.894531 C 731.054688 497.082031 749.253906 494.042969 770.011719 493.765625 L 770.011719 456.402344 C 770.011719 450.316406 768.484375 444.296875 765.445312 438.34375 C 762.394531 432.394531 757.621094 427.34375 751.121094 423.191406 C 744.617188 419.039062 736.242188 416.964844 726.007812 416.964844 C 725.730469 416.964844 724.828125 417.035156 723.308594 417.171875 C 721.785156 417.316406 720.746094 417.523438 720.195312 417.792969 L 687.398438 452.25 L 678.269531 452.25 L 675.359375 423.191406 C 686.429688 418.488281 695.632812 414.617188 702.96875 411.570312 C 710.296875 408.527344 717.082031 406.316406 723.308594 404.925781 C 729.535156 403.542969 736.386719 402.851562 743.855469 402.851562 C 752.710938 402.851562 761.085938 404.511719 768.972656 407.832031 C 776.859375 411.152344 783.296875 415.925781 788.277344 422.152344 C 793.257812 428.378906 795.75 435.925781 795.75 444.777344 L 795.75 568.070312 L 825.222656 576.371094 L 825.222656 582.183594 L 782.878906 597.960938 L 770.011719 597.960938 L 770.011719 576.371094 C 764.472656 579.695312 758.867188 583.015625 753.199219 586.335938 C 747.523438 589.65625 741.78125 592.425781 735.96875 594.640625 C 730.160156 596.851562 723.933594 597.960938 717.289062 597.960938 "/><path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 925.269531 508.707031 C 934.671875 508.707031 942.289062 506.152344 948.101562 501.027344 C 953.910156 495.910156 956.816406 485.1875 956.816406 468.855469 C 956.816406 450.871094 952.730469 437.511719 944.570312 428.796875 C 936.40625 420.078125 925.125 415.71875 910.738281 415.71875 C 901.046875 415.71875 893.304688 418.488281 887.492188 424.023438 C 881.679688 429.5625 878.773438 440.492188 878.773438 456.816406 C 878.773438 474.53125 882.992188 487.609375 891.4375 496.046875 C 899.875 504.492188 911.152344 508.707031 925.269531 508.707031 M 919.457031 658.570312 C 931.910156 658.570312 942.351562 656.492188 950.796875 652.339844 C 959.238281 648.191406 965.671875 642.859375 970.101562 636.359375 C 974.527344 629.851562 976.742188 623.28125 976.742188 616.640625 C 976.742188 611.378906 975.148438 606.675781 971.96875 602.527344 C 968.785156 598.375 964.011719 594.910156 957.648438 592.148438 C 954.878906 590.765625 950.382812 589.242188 944.15625 587.582031 C 937.929688 585.921875 932.046875 584.402344 926.515625 583.015625 C 924.574219 582.464844 922.636719 581.914062 920.703125 581.355469 C 918.761719 580.804688 916.824219 580.386719 914.890625 580.109375 C 902.707031 588.691406 892.402344 596.921875 883.964844 604.808594 C 875.519531 612.695312 871.300781 620.648438 871.300781 628.679688 C 871.300781 636.421875 875.175781 643.34375 882.925781 649.4375 C 890.667969 655.519531 902.851562 658.570312 919.457031 658.570312 M 902.851562 676.417969 C 882.648438 676.417969 867.421875 672.683594 857.1875 665.210938 C 846.945312 657.738281 841.828125 648.878906 841.828125 638.644531 C 841.828125 632.832031 843.625 627.082031 847.222656 621.414062 C 850.816406 615.738281 857.117188 609.375 866.113281 602.320312 C 875.101562 595.261719 887.90625 586.894531 904.511719 577.203125 C 892.058594 574.160156 883.753906 570.632812 879.605469 566.617188 C 875.453125 562.609375 873.375 557.554688 873.375 551.464844 C 873.375 548.421875 875.101562 544.824219 878.566406 540.671875 C 882.023438 536.519531 889.007812 529.328125 899.53125 519.085938 C 891.5 517.425781 883.683594 514.453125 876.074219 510.160156 C 868.460938 505.875 862.304688 500.0625 857.601562 492.726562 C 852.894531 485.394531 850.542969 476.46875 850.542969 465.949219 C 850.542969 452.664062 854.140625 441.320312 861.339844 431.910156 C 868.53125 422.503906 877.457031 415.375 888.113281 410.53125 C 898.765625 405.691406 909.214844 403.265625 919.457031 403.265625 C 926.929688 403.265625 933.777344 404.03125 940.003906 405.546875 C 946.230469 407.074219 951.835938 409.355469 956.816406 412.398438 L 1014.9375 394.132812 L 1009.121094 427.34375 L 1002.066406 427.34375 L 963.042969 416.550781 C 970.238281 421.8125 975.769531 428.523438 979.648438 436.683594 C 983.523438 444.847656 985.460938 453.496094 985.460938 462.628906 C 985.460938 473.980469 981.789062 484.007812 974.460938 492.726562 C 967.125 501.441406 957.917969 508.226562 946.855469 513.066406 C 935.78125 517.910156 924.292969 520.332031 912.398438 520.332031 L 909.910156 520.332031 C 906.859375 526.144531 904.441406 530.917969 902.644531 534.652344 C 900.839844 538.390625 899.945312 541.367188 899.945312 543.578125 C 899.945312 548.007812 902.363281 551.257812 907.210938 553.332031 C 912.050781 555.410156 920.972656 557.972656 933.984375 561.011719 L 952.25 565.164062 C 966.367188 568.214844 976.878906 571.390625 983.800781 574.710938 C 990.714844 578.035156 995.351562 581.914062 997.707031 586.335938 C 1000.054688 590.765625 1001.238281 596.15625 1001.238281 602.527344 C 1001.238281 610.269531 998.675781 618.4375 993.554688 627.019531 C 988.433594 635.59375 981.375 643.625 972.386719 651.097656 C 963.386719 658.570312 952.9375 664.652344 941.042969 669.363281 C 929.140625 674.0625 916.40625 676.417969 902.851562 676.417969 "/><path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 1129.09375 578.035156 C 1142.652344 578.035156 1153.445312 576.101562 1161.476562 572.222656 C 1169.496094 568.351562 1175.308594 561.5 1178.910156 551.671875 C 1182.503906 541.851562 1184.308594 528.363281 1184.308594 511.199219 C 1184.308594 484.078125 1178.769531 462.628906 1167.699219 446.855469 C 1156.628906 431.078125 1141.269531 423.191406 1121.621094 423.191406 C 1108.339844 423.191406 1097.609375 425.132812 1089.449219 429.003906 C 1081.285156 432.882812 1075.402344 439.589844 1071.808594 449.136719 C 1068.207031 458.683594 1066.410156 472.175781 1066.410156 489.613281 C 1066.410156 516.738281 1072.015625 538.253906 1083.222656 554.164062 C 1094.433594 570.082031 1109.71875 578.035156 1129.09375 578.035156 M 1118.71875 597.960938 C 1102.941406 597.960938 1088.964844 594.082031 1076.789062 586.335938 C 1064.609375 578.59375 1055.132812 567.65625 1048.351562 553.542969 C 1041.570312 539.429688 1038.183594 522.820312 1038.183594 503.726562 C 1038.183594 482.417969 1042.46875 464.222656 1051.050781 449.136719 C 1059.625 434.054688 1071.113281 422.503906 1085.507812 414.472656 C 1099.894531 406.449219 1115.53125 402.4375 1132.414062 402.4375 C 1148.464844 402.4375 1162.441406 406.316406 1174.34375 414.058594 C 1186.238281 421.808594 1195.578125 432.8125 1202.363281 447.0625 C 1209.144531 461.320312 1212.535156 477.988281 1212.535156 497.082031 C 1212.535156 518.121094 1208.242188 536.179688 1199.664062 551.257812 C 1191.085938 566.347656 1179.742188 577.898438 1165.625 585.921875 C 1151.511719 593.945312 1135.871094 597.960938 1118.71875 597.960938 "/><path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 1306.769531 597.960938 C 1298.1875 597.960938 1288.359375 597.265625 1277.292969 595.882812 C 1266.222656 594.496094 1257.367188 592.425781 1250.726562 589.65625 L 1256.539062 554.785156 L 1267.332031 554.785156 L 1288.917969 580.523438 C 1291.410156 581.082031 1294.867188 581.839844 1299.296875 582.808594 C 1303.71875 583.78125 1308.152344 584.261719 1312.582031 584.261719 C 1325.585938 584.261719 1335.828125 581.914062 1343.300781 577.203125 C 1350.773438 572.5 1354.507812 563.648438 1354.507812 550.636719 C 1354.507812 541.78125 1352.019531 534.515625 1347.035156 528.839844 C 1342.054688 523.171875 1332.503906 517.425781 1318.390625 511.613281 L 1297.222656 502.894531 C 1284.488281 497.640625 1274.597656 490.929688 1267.539062 482.761719 C 1260.480469 474.601562 1256.953125 464.703125 1256.953125 453.082031 C 1256.953125 443.949219 1260.203125 435.582031 1266.707031 427.964844 C 1273.207031 420.355469 1281.789062 414.265625 1292.445312 409.699219 C 1303.097656 405.132812 1314.511719 402.851562 1326.695312 402.851562 C 1336.929688 402.851562 1346.6875 403.824219 1355.960938 405.757812 C 1365.230469 407.695312 1372.628906 409.773438 1378.167969 411.984375 L 1372.359375 445.191406 L 1363.226562 445.191406 L 1340.394531 418.625 C 1337.625 418.074219 1334.230469 417.523438 1330.222656 416.964844 C 1326.207031 416.414062 1321.433594 416.136719 1315.902344 416.136719 C 1293.484375 416.136719 1282.277344 425.546875 1282.277344 444.363281 C 1282.277344 454.605469 1285.871094 462.5625 1293.070312 468.234375 C 1300.261719 473.910156 1308.566406 478.683594 1317.976562 482.554688 L 1338.320312 490.855469 C 1351.875 496.117188 1362.460938 502.625 1370.074219 510.367188 C 1377.683594 518.121094 1381.492188 528.632812 1381.492188 541.917969 C 1381.492188 552.710938 1377.683594 562.332031 1370.074219 570.769531 C 1362.460938 579.214844 1352.984375 585.855469 1341.640625 590.695312 C 1330.289062 595.535156 1318.664062 597.960938 1306.769531 597.960938 "/><path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 1411.378906 593.808594 L 1411.378906 587.167969 L 1442.515625 573.050781 L 1442.515625 431.078125 L 1431.648438 425.269531 L 1431.648438 419.039062 L 1457.042969 402.851562 L 1469.914062 402.851562 L 1469.914062 573.050781 L 1499.800781 587.167969 L 1499.800781 593.808594 Z M 1411.378906 593.808594 "/><g fill="currentColor" fill-opacity="1"><use xlink:href="#mg-0-0" x="1085.3799" y="703.4487"/><use xlink:href="#mg-0-1" x="1161.776951" y="703.4487"/><use xlink:href="#mg-0-2" x="1232.435256" y="703.4487"/><use xlink:href="#mg-0-3" x="1295.830461" y="703.4487"/><use xlink:href="#mg-0-4" x="1337.077695" y="703.4487"/><use xlink:href="#mg-0-5" x="1412.04006" y="703.4487"/></g><path fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" stroke-opacity="1" stroke-dasharray="7.943 7.943" stroke-miterlimit="4" d="M 0.000325 -0.00119375 C -2.980144 -0.00119375 -6.585613 0.990994 -10.800456 2.979275 C -15.023113 4.959744 -18.991863 7.565213 -22.714519 10.799588 C -26.437175 14.022244 -29.675456 17.373806 -32.398113 20.854275 C -35.132488 24.323025 -36.495769 27.803494 -36.495769 31.280056 C -36.495769 34.748806 -35.378581 38.600369 -33.144206 42.826931 C -30.909831 47.037869 -28.058269 51.135525 -24.5778 55.115994 C -21.10905 59.084744 -17.503581 62.3074 -13.780925 64.799588 C -10.054363 67.27615 -6.7028 68.522244 -3.722331 68.522244 C -1.245769 68.522244 2.105794 67.522244 6.32845 65.541775 C 10.543294 63.553494 14.64095 60.944119 18.621419 57.721463 C 22.586262 54.487088 25.941731 51.135525 28.676106 47.666775 C 31.398762 44.186306 32.769856 40.709744 32.769856 37.240994 C 32.769856 33.760525 31.527669 29.908963 29.0472 25.694119 C 26.558919 21.471463 23.57845 17.373806 20.1097 13.405056 C 16.629231 9.424588 13.035481 6.201931 9.312825 3.725369 C 5.586262 1.233181 2.480794 -0.00119375 0.000325 -0.00119375 Z M 0.000325 -0.00119375 " transform="matrix(1, 0, 0, -1, 1457.4528, 386.6824)"/><path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 1536.296875 415.335938 C 1533.316406 415.335938 1529.710938 414.34375 1525.496094 412.355469 C 1521.273438 410.375 1517.304688 407.769531 1513.582031 404.535156 C 1509.859375 401.308594 1506.621094 397.960938 1503.898438 394.480469 C 1501.164062 391.011719 1499.800781 387.53125 1499.800781 384.050781 C 1499.800781 380.585938 1500.917969 376.730469 1503.152344 372.507812 C 1505.386719 368.296875 1508.238281 364.199219 1511.71875 360.21875 C 1515.1875 356.25 1518.792969 353.027344 1522.519531 350.535156 C 1526.242188 348.058594 1529.59375 346.8125 1532.574219 346.8125 C 1535.050781 346.8125 1538.402344 347.8125 1542.625 349.792969 C 1546.839844 351.78125 1550.9375 354.386719 1554.917969 357.613281 C 1558.882812 360.847656 1562.238281 364.199219 1564.972656 367.667969 C 1567.695312 371.144531 1569.066406 374.625 1569.066406 378.09375 C 1569.066406 381.574219 1567.824219 385.425781 1565.34375 389.636719 C 1562.855469 393.863281 1559.875 397.960938 1556.40625 401.925781 C 1552.925781 405.90625 1549.332031 409.132812 1545.609375 411.609375 C 1541.882812 414.101562 1538.777344 415.335938 1536.296875 415.335938 "/> </symbol></svg>
+<div class="marble" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Magosi Design, Eliseu Martins. Open the portfolio">
+      <svg class="magosi" aria-hidden="true"><use href="#magosi"></use></svg>
+      <span>Eliseu Martins<small>Resume</small></span>
+    </a>
+    <ul>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="/">Portfolio</a></li>
+    </ul>
+    <a class="btn primary" href="/Eliseu-Martins-Senior-Art-Director-Resume.pdf" target="_blank" rel="noopener">Download PDF</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-l">
+        <p class="kicker">Goiânia, Brazil. Remote, on US and EU hours.</p>
+        <h1>Eliseu Martins</h1>
+        <p class="role">Senior Art Director</p>
+        <div class="facts">
+          <div><b>12+</b><span>years in design and marketing</span></div>
+          <div><b>2014</b><span>first agency job</span></div>
+          <div><b>7</b><span>agencies since 2014</span></div>
+        </div>
+      </div>
+      <div class="hero-r">
+        <p>Art director with 12+ years in design and marketing, from production artist to senior art director and creative director in Brazilian agencies. I lead campaigns for healthcare, real estate, retail, sports and public programs, and run my own generative AI image pipeline (ComfyUI, Stable Diffusion, Magnific) with Photoshop finishing.</p>
+        <div class="actions" id="hero-links"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="brands">
+    <div class="wrap">
+      <span class="kicker">Brands I've worked with</span>
+      <div class="belt"><div class="belt-track" id="logos"></div></div>
+    </div>
+  </div>
+
+  <section class="section light" id="experience">
+    <div class="wrap">
+      <div class="section-head"><h2>Experience</h2><a class="btn" href="/">See the portfolio</a></div>
+      <ol class="timeline">
+        <li class="job"><span class="when">Oct 2024 – Oct 2026</span><span class="rail"></span><div class="body">
+          <h3>Art Director</h3><p class="org">ZF Comunicação, Goiânia</p>
+          <ul>
+            <li>Art director for Unimed Goiânia, a healthcare cooperative of almost 3,000 doctors, and FGR Incorporações, a real estate developer ranked in Valor 1000.</li>
+            <li>Created “Peace in Football”, an anti-violence campaign for the sponsor of the state's three rival clubs: key visuals, stadium screens, pitch-side banners, billboards and social carousels, in two phases.</li>
+            <li>Directed AI-assisted 3D campaigns, including “Every Piece Counts” for the UN International Year of Cooperatives and the World Water Day character series.</li>
+            <li>Designed paid social systems for five gated communities and responsive landing pages in RD Station (CRM and marketing automation).</li>
+          </ul></div></li>
+        <li class="job"><span class="when">Feb 2022 – Sep 2024<br>Jul 2019 – Aug 2020</span><span class="rail"></span><div class="body">
+          <h3>Senior Art Director</h3><p class="org">Places Marketing Imobiliário, Goiânia. Art Director in 2019–2020.</p>
+          <ul><li>Art direction for a real estate marketing agency: launch campaigns, sales stands, out-of-home, paid media and social for residential developers and resort projects. Returned in 2022 as senior art director.</li></ul></div></li>
+        <li class="job"><span class="when">Sep 2020 – Jan 2022</span><span class="rail"></span><div class="body">
+          <h3>Creative Director</h3><p class="org">MundoW3, Catalão (Goiás)</p>
+          <ul><li>Headed creative work for client campaigns, social media and websites.</li></ul></div></li>
+        <li class="job"><span class="when">Jul 2018 – Jul 2019</span><span class="rail"></span><div class="body">
+          <h3>Art Director</h3><p class="org">Agência Mancini, Goiânia</p>
+          <ul><li>Art direction for advertising campaigns, print pieces and social media.</li></ul></div></li>
+        <li class="job"><span class="when">Apr 2014 – Jun 2018</span><span class="rail"></span><div class="body">
+          <h3>Production Artist</h3><p class="org">Asteroid Propaganda, Inquieta/Jordão and Jordão Publicidade</p>
+          <ul><li>Final artwork and print and digital production. Jordão Publicidade is where I started in advertising, in 2014.</li></ul></div></li>
+        <li class="job"><span class="when">Ongoing</span><span class="rail"></span><div class="body">
+          <h3>Founder and Art Director</h3><p class="org">Magosi Design and NT SHOP, independent</p>
+          <ul><li>Freelance art direction, brand identity and web design as Magosi Design. Founder of NT SHOP, a direct-to-consumer streetwear label: identity, apparel graphics, AI-directed lookbook and motion, print-on-demand store.</li></ul></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="skills">
+    <div class="wrap">
+      <div class="section-head"><h2>Skills and tools</h2></div>
+      <div class="caps">
+        <div><h3>Art direction</h3><p>Key visuals, integrated 360° campaigns, out-of-home and stadium media, photography direction, typography, layout systems.</p></div>
+        <div><h3>Brand and digital</h3><p>Visual identity, logo systems, motion design, websites and landing pages, paid social, CRM and marketing automation (RD Station), e-commerce (Shopify).</p></div>
+        <div><h3>AI image production</h3><p>ComfyUI workflows, Stable Diffusion, Magnific upscaling, compositing and retouching.</p></div>
+        <div><h3>Tools</h3><p>Photoshop, Illustrator, InDesign, Figma / Adobe XD, ComfyUI, Stable Diffusion, Magnific, RD Station, Shopify.</p></div>
+      </div>
+      <div class="edu">
+        <div><h3>Education</h3><p class="big">Advertising Production</p><p>Faculdade Cambury, 2013–2015 (Produção Publicitária).</p></div>
+        <div><h3>Languages</h3><p class="big">Portuguese and English</p><p>Portuguese (native), English.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <h2>Let's talk about your team.</h2>
+      <p>The fastest way to reach me is via email, LinkedIn or WhatsApp. I usually reply the same day, aligned with US (EST/PST) and EU hours.</p>
+      <div class="contact-links" id="contact-links"></div>
+      <div class="foot">
+        <svg class="magosi" aria-label="Magosi Design"><use href="#magosi"></use></svg>
+        <span>© 2026 Eliseu Martins, Magosi Design. <a href="/">See the full portfolio</a></span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+const EMAIL = "eliseum.g.silva@gmail.com";
+const LINKS = { linkedin: "https://www.linkedin.com/in/eliseu-martins/", whatsapp: "https://wa.me/5562993439889?text=" + encodeURIComponent("Hi Eliseu, I saw your resume and I'd like to talk about a role."), behance: "https://www.behance.net/eliseumartins", pdf: "/Eliseu-Martins-Senior-Art-Director-Resume.pdf" };
+const MAIL_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>';
+const IN_ICON = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.6c0-1.3 0-3-1.9-3s-2.2 1.5-2.2 2.9V21h-4V9Z"/></svg>';
+const WA_ICON = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.6-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1 2.7.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>';
+
+function links(id, compact) {
+  const L = [
+    `<a class="btn primary" href="mailto:${EMAIL}">${MAIL_ICON}${compact ? "Email me" : EMAIL}</a>`,
+    `<button class="btn copy-email" type="button">Copy email</button>`,
+    `<a class="btn alt" href="${LINKS.linkedin}" target="_blank" rel="noopener">${IN_ICON}LinkedIn</a>`,
+    `<a class="btn" href="${LINKS.whatsapp}" target="_blank" rel="noopener">${WA_ICON}WhatsApp</a>`,
+  ];
+  if (!compact) L.push(`<a class="btn" href="${LINKS.behance}" target="_blank" rel="noopener">Behance</a>`, `<a class="btn" href="${LINKS.pdf}" target="_blank" rel="noopener">Download PDF</a>`);
+  document.getElementById(id).innerHTML = L.join("");
+}
+links("hero-links", true);
+links("contact-links", false);
+document.querySelectorAll(".copy-email").forEach(btn => btn.addEventListener("click", () => {
+  const done = () => { btn.textContent = "Copied"; btn.classList.add("copied"); setTimeout(() => { btn.textContent = "Copy email"; btn.classList.remove("copied"); }, 2000); };
+  const fallback = () => { const t = document.createElement("textarea"); t.value = EMAIL; document.body.appendChild(t); t.select(); let ok = false; try { ok = document.execCommand("copy"); } catch (e) {} t.remove(); if (ok) done(); else btn.textContent = EMAIL; };
+  try { navigator.clipboard.writeText(EMAIL).then(done, fallback); } catch (e) { fallback(); }
+}));
+
+const LOGOS = [["unimed", "Unimed Goiânia", 3.744, 36], ["jeep", "Jeep", 2.481, 36], ["yamaha", "Yamaha", 1, 46], ["opopular", "O Popular", 6.0, 26], ["fgr", "FGR Incorporações", 1.906, 46], ["daqui", "Jornal Daqui", 1.569, 48], ["santa-marta", "Drogaria Santa Marta", 3.881, 38], ["sousa-andrade", "Sousa Andrade", 2.862, 42], ["trinus", "Trinus", 3.163, 32], ["sim", "SIM Engenharia", 2.05, 40], ["expand", "Expand Empreendimentos", 3.144, 40], ["sandella", "Sandella", 2.081, 46]];
+const lh = LOGOS.map(([f, n, r, h]) => `<span class="logo" role="img" aria-label="${n}" style="--m:url(/assets/logos/${f}.png);--r:${r};--h:${h}px"></span>`).join("");
+document.getElementById("logos").innerHTML = lh + lh.replaceAll('role="img"', 'aria-hidden="true"');
+</script>
+</body>
+</html>
