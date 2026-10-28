@@ -1,0 +1,970 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Eliseu Martins | Diretor de arte</title>
+<meta name="description" content="Eliseu Martins, diretor de arte em Goiânia. Campanhas, key visuals, motion e identidade. Atendimento pela Magosi Design.">
+<link rel="alternate" hreflang="en" href="https://magosi-design.vercel.app/">
+<link rel="alternate" hreflang="pt-BR" href="https://magosi-design.vercel.app/br/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300..800&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+/* Layout: Magosi Design. Navy marble ground (#232f42 veined with #37465e), work presented like proofs
+   with crop marks, one process-yellow accent. Geometric sans (close to Galano Grotesque) + serif italic. */
+:root {
+  color-scheme: dark;
+  --bg: #232F42;          /* navy base */
+  --bg-2: #2C3A50;        /* raised surfaces */
+  --vein: #37465E;        /* marble light */
+  --line: rgba(232, 237, 245, .14);
+  --fg: #EEF1F6;
+  --muted: #A6B1C3;
+  --accent: #FFD23F;      /* process yellow */
+  --accent-ink: #1C1704;
+  --paper: #EEEBE3;
+  --shadow: rgba(10, 16, 28, .55);
+  --crop: rgba(232, 237, 245, .45);
+  --sans: "Urbanist", "Helvetica Neue", Arial, sans-serif;
+  --serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --step--1: .8125rem;
+  --step-0: 1rem;
+  --step-1: 1.1875rem;
+  --step-2: clamp(1.5rem, 1.2rem + 1.2vw, 2.125rem);
+  --step-3: clamp(2rem, 1.4rem + 2.6vw, 3.5rem);
+  --step-4: clamp(2.6rem, 1.6rem + 4.6vw, 5.75rem);
+  --gut: 16px;
+}
+@media (min-width: 900px) { :root { --gut: 40px; } }
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--sans); font-size: var(--step-0); line-height: 1.55; font-weight: 450;
+  -webkit-font-smoothing: antialiased;
+}
+/* marble layer, fixed behind everything */
+.marble { position: fixed; inset: 0; z-index: -1; background: var(--bg) url(/assets/marble.webp) center / cover no-repeat; }
+.marble::after { content: ""; position: absolute; inset: 0; background: radial-gradient(120% 80% at 80% 0%, rgba(55, 70, 94, .35), transparent 60%), radial-gradient(90% 70% at 0% 100%, rgba(55, 70, 94, .25), transparent 60%); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+img, video { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+h1, h2, h3 { text-wrap: balance; margin: 0; font-weight: 650; letter-spacing: -.02em; line-height: 1.05; }
+p { margin: 0; }
+.wrap {
+  max-width: 1360px; margin: 0 auto;
+  padding-left: max(var(--gut), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--gut), env(safe-area-inset-right, 0px));
+}
+.serif { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -.01em; }
+.magosi { display: block; color: currentColor; }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; gap: .55em; min-height: 44px;
+  padding: .7em 1.25em; border-radius: 999px; font: 650 var(--step-0)/1 var(--sans);
+  text-decoration: none; border: 1px solid var(--line); background: transparent; color: var(--fg); cursor: pointer;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.btn:hover { border-color: var(--fg); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.btn.primary:hover { background: var(--fg); border-color: var(--fg); }
+.btn svg { width: 20px; height: 20px; flex: none; }
+
+/* Nav */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+.nav .wrap { display: flex; align-items: center; gap: 24px; min-height: 72px; }
+.brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+.brand .magosi { width: 112px; height: 38px; }
+.brand span { padding-left: 14px; border-left: 1px solid var(--line); font-weight: 600; letter-spacing: .01em; line-height: 1.2; }
+.brand small { display: block; font-weight: 400; color: var(--muted); font-size: var(--step--1); }
+.nav ul { display: flex; gap: 28px; list-style: none; margin: 0 0 0 auto; padding: 0; }
+.nav ul a { text-decoration: none; color: var(--muted); }
+.nav ul a:hover { color: var(--fg); }
+.nav .btn { min-height: 40px; padding: .55em 1.1em; }
+@media (max-width: 820px) { .nav ul { display: none; } .nav .btn { margin-left: auto; } }
+@media (max-width: 480px) { .brand span { display: none; } }
+
+/* Hero */
+.hero .wrap { display: grid; grid-template-columns: 1fr; gap: 40px; padding-block: 48px 56px; }
+@media (min-width: 980px) { .hero .wrap { grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); gap: 56px; align-items: center; padding-block: 56px 72px; } }
+.hero-copy { display: grid; gap: 26px; min-width: 0; }
+.hero-id { display: flex; align-items: center; gap: 16px; color: var(--muted); font-size: var(--step--1); }
+.hero-id .magosi { width: 96px; height: 32px; color: var(--fg); }
+.hero-id::before { content: ""; order: 0; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 22%, transparent); flex: none; }
+.hero-id span { order: 3; }
+.hero h1 { font-size: var(--step-4); font-weight: 650; line-height: .98; letter-spacing: -.035em; }
+.hero h1 .serif { font-size: 1.1em; line-height: .9; }
+.hero-lede { font-size: var(--step-1); color: color-mix(in srgb, var(--fg) 84%, var(--bg)); max-width: 30em; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.marquee { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; height: clamp(420px, 72vh, 700px); overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 10%, #000 90%, transparent); mask-image: linear-gradient(to bottom, transparent, #000 10%, #000 90%, transparent); }
+@media (max-width: 620px) { .marquee { grid-template-columns: repeat(2, minmax(0, 1fr)); height: 400px; } .marquee .col:nth-child(3) { display: none; } }
+.col { min-width: 0; }
+.track { display: flex; flex-direction: column; animation: scroll-up var(--dur, 70s) linear infinite; will-change: transform; }
+.col.down .track { animation-name: scroll-down; }
+.marquee:hover .track { animation-play-state: paused; }
+.track a, .track > div { display: block; padding-bottom: 12px; }
+.track img { width: 100%; border-radius: 4px; background: var(--bg-2); transition: opacity .25s; box-shadow: 0 10px 30px -12px var(--shadow); }
+.track a:hover img { opacity: .82; }
+@keyframes scroll-up { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+@keyframes scroll-down { from { transform: translateY(-50%); } to { transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .track { animation: none; } }
+
+/* Brands + tools */
+.brands { border-block: 1px solid var(--line); background: color-mix(in srgb, var(--bg) 55%, transparent); }
+.brands .wrap { display: grid; gap: 18px; padding-block: 30px 26px; }
+.brands-label { color: var(--muted); font-size: var(--step--1); }
+.belt { overflow: hidden; -webkit-mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent); mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent); }
+.belt-track { display: flex; align-items: center; width: max-content; animation: scroll-left var(--dur, 60s) linear infinite; }
+.belt:hover .belt-track { animation-play-state: paused; }
+.belt.rev .belt-track { animation-direction: reverse; }
+.logo { flex: none; margin-right: 64px; height: var(--h, 38px); aspect-ratio: var(--r); background: var(--fg); opacity: .78;
+  -webkit-mask: var(--m) center / contain no-repeat; mask: var(--m) center / contain no-repeat; transition: opacity .2s; }
+.logo:hover { opacity: 1; }
+.tools span { display: inline-flex; align-items: center; gap: 22px; padding-right: 22px; white-space: nowrap; color: var(--muted); font-size: var(--step-0); }
+.tools span::after { content: ""; width: 6px; height: 6px; background: var(--accent); transform: rotate(45deg); }
+@keyframes scroll-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .belt-track { animation: none; } }
+@media (max-width: 620px) { .logo { --h: 28px !important; margin-right: 44px; } }
+
+/* Sections */
+.section .wrap { padding-block: 88px; }
+/* ice-white break for the project grid */
+.light { --bg: #F1F3F6; --bg-2: #E2E7EE; --fg: #1D2738; --muted: #5A6578; --line: rgba(29, 39, 56, .14); --crop: rgba(29, 39, 56, .38); --shadow: rgba(29, 39, 56, .30); background: var(--bg); color: var(--fg); }
+.btn.alt { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.btn.alt:hover { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.section-head { display: grid; gap: 14px; margin-bottom: 44px; max-width: 46rem; }
+.section-head h2 { font-size: var(--step-3); }
+.section-head p { color: var(--muted); font-size: var(--step-1); }
+
+/* Bento of cases */
+.bento { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 56px 32px; }
+.card { grid-column: span 12; display: grid; gap: 18px; text-decoration: none; min-width: 0; }
+@media (min-width: 900px) { .card.w7 { grid-column: span 7; } .card.w5 { grid-column: span 5; } }
+.frame { position: relative; padding: 14px; }
+.frame::before { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(var(--crop), var(--crop)) 0 14px / 9px 1px no-repeat,
+    linear-gradient(var(--crop), var(--crop)) 14px 0 / 1px 9px no-repeat,
+    linear-gradient(var(--crop), var(--crop)) 100% 14px / 9px 1px no-repeat,
+    linear-gradient(var(--crop), var(--crop)) calc(100% - 14px) 0 / 1px 9px no-repeat,
+    linear-gradient(var(--crop), var(--crop)) 0 calc(100% - 14px) / 9px 1px no-repeat,
+    linear-gradient(var(--crop), var(--crop)) 14px 100% / 1px 9px no-repeat,
+    linear-gradient(var(--crop), var(--crop)) 100% calc(100% - 14px) / 9px 1px no-repeat,
+    linear-gradient(var(--crop), var(--crop)) calc(100% - 14px) 100% / 1px 9px no-repeat; }
+.media { position: relative; overflow: hidden; aspect-ratio: 16 / 10; background: var(--bg-2); border-radius: 3px; box-shadow: 0 24px 50px -24px var(--shadow); }
+@media (min-width: 900px) { .card .media { aspect-ratio: auto; height: clamp(320px, 31vw, 440px); } }
+.media img, .media video { width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.2, .7, .2, 1); }
+.card:hover .media img, .card:hover .media video { transform: scale(1.045); }
+.pill { position: absolute; left: 50%; bottom: 20px; translate: -50% 0; padding: .6em 1.1em; border-radius: 999px; background: var(--accent); color: var(--accent-ink); font-weight: 650; font-size: var(--step--1); white-space: nowrap; opacity: 0; transform: translateY(10px); transition: opacity .3s, transform .3s; }
+.card:hover .pill, .card:focus-visible .pill { opacity: 1; transform: none; }
+@media (hover: none) { .pill { opacity: 1; transform: none; } }
+.card-meta { display: grid; gap: 10px; padding-inline: 14px; }
+.slug { display: flex; flex-wrap: wrap; gap: 4px 16px; color: var(--muted); font-size: var(--step--1); font-variant-numeric: tabular-nums; }
+.card h3 { font-size: var(--step-2); font-weight: 650; }
+.card p { color: color-mix(in srgb, var(--fg) 80%, var(--bg)); max-width: 40em; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 4px 0 0; padding: 0; }
+.tags li { border: 1px solid var(--line); border-radius: 999px; padding: .25em .8em; font-size: var(--step--1); color: var(--muted); }
+
+/* Approach */
+.approach { background: color-mix(in srgb, var(--bg-2) 70%, transparent); }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 1px solid var(--line); }
+@media (max-width: 980px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .steps { grid-template-columns: 1fr; } }
+.steps li { display: grid; align-content: start; gap: 10px; padding: 24px 22px 28px 0; border-bottom: 1px solid var(--line); min-width: 0; }
+.steps b { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 2.4rem; line-height: 1; color: var(--accent); }
+.steps h3 { font-size: var(--step-1); }
+.steps p { color: var(--muted); font-size: .9375rem; }
+
+/* Capabilities */
+.caps { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 28px; }
+@media (max-width: 1180px) { .caps { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 980px) { .caps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .caps { grid-template-columns: 1fr; } }
+.caps div { display: grid; align-content: start; gap: 10px; border-top: 2px solid var(--accent); padding-top: 18px; min-width: 0; }
+.caps h3 { font-size: var(--step-1); }
+.caps p { color: var(--muted); }
+.toolbelt { margin-top: 48px; color: var(--muted); }
+.toolbelt strong { color: var(--fg); font-weight: 650; }
+
+/* Contact */
+.contact { border-top: 1px solid var(--line); }
+.contact .wrap { padding-block: 96px 40px; display: grid; gap: 28px; }
+.contact h2 { font-size: var(--step-4); letter-spacing: -.035em; line-height: .98; max-width: 14em; }
+.contact p { color: var(--muted); font-size: var(--step-1); max-width: 36em; }
+.contact-links { display: flex; flex-wrap: wrap; gap: 12px; }
+.nav .resume-link { margin-left: 4px; }
+.lang { min-height: 40px; padding: .5em .9em; font-size: var(--step--1); letter-spacing: .04em; }
+@media (max-width: 820px) { .nav .lang { margin-left: auto; } .nav .lang + .resume-link + .btn { margin-left: 8px; } }
+@media (max-width: 820px) { .nav .resume-link { display: none; } }
+.btn.copied { border-color: var(--accent); color: var(--accent); }
+.contact-note { font-size: var(--step--1) !important; }
+.foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-top: 64px; padding-top: 22px; border-top: 1px solid var(--line); color: var(--muted); font-size: var(--step--1); }
+.foot .magosi { width: 120px; height: 40px; color: var(--fg); }
+
+/* Case viewer */
+.case { position: fixed; inset: 0; z-index: 50; background: var(--bg) url(/assets/marble.webp) center / cover no-repeat; overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+.case:not([hidden]) { animation: case-in .35s cubic-bezier(.2, .7, .2, 1); }
+@keyframes case-in { from { opacity: 0; transform: translateY(24px); } }
+@media (prefers-reduced-motion: reduce) { .case:not([hidden]) { animation: none; } }
+.case-bar { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+.case-bar .wrap { display: flex; align-items: center; gap: 16px; min-height: 64px; }
+.case-bar span { color: var(--muted); font-size: var(--step--1); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.case-bar .btn { margin-left: auto; min-height: 40px; padding: .5em 1.1em; flex: none; }
+.case-head .wrap { padding-block: 56px 48px; display: grid; gap: 24px; }
+.case-head h2 { font-size: var(--step-3); max-width: 18em; }
+.case-head .lede { font-size: var(--step-1); color: color-mix(in srgb, var(--fg) 84%, var(--bg)); max-width: 40em; }
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin: 8px 0 0; border-top: 1px solid var(--line); padding-top: 20px; }
+@media (max-width: 700px) { .facts { grid-template-columns: 1fr; gap: 14px; } }
+.facts dt { color: var(--muted); font-size: var(--step--1); }
+.facts dd { margin: 4px 0 0; }
+
+.blocks { display: grid; gap: clamp(48px, 7vw, 120px); padding-bottom: 40px; }
+.blk { max-width: 1360px; width: 100%; margin: 0 auto; padding-left: max(var(--gut), env(safe-area-inset-left, 0px)); padding-right: max(var(--gut), env(safe-area-inset-right, 0px)); }
+.shot { width: 100%; border-radius: 3px; background: var(--bg-2); box-shadow: 0 30px 60px -28px var(--shadow); }
+.cap { color: var(--muted); font-size: var(--step--1); margin-top: 14px; max-width: 60em; }
+
+/* full-bleed with parallax */
+.blk-bleed { position: relative; overflow: hidden; height: min(calc(100vw / var(--ar, 1.78)), 88vh); }
+.blk-bleed img, .blk-bleed video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.blk-bleed .cap { position: absolute; left: max(var(--gut), env(safe-area-inset-left, 0px)); bottom: 16px; margin: 0; padding: .35em .8em; border-radius: 999px; background: color-mix(in srgb, var(--bg) 78%, transparent); color: var(--fg); }
+
+/* contained image with width + alignment */
+.blk-img { display: flex; flex-direction: column; }
+.blk-img figure { margin: 0; width: var(--w, 100%); }
+.blk-img.left figure { margin-right: auto; } .blk-img.right figure { margin-left: auto; } .blk-img.center figure { margin-inline: auto; }
+
+/* image beside a note */
+.blk-inset { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px; align-items: center; }
+.blk-inset figure { margin: 0; grid-column: 1 / span 8; min-width: 0; }
+.blk-inset .note { grid-column: 9 / span 4; display: grid; gap: 10px; min-width: 0; }
+.blk-inset.right figure { grid-column: 5 / span 8; grid-row: 1; }
+.blk-inset.right .note { grid-column: 1 / span 4; grid-row: 1; text-align: right; justify-items: end; }
+.note h4 { margin: 0; font-family: var(--serif); font-style: italic; font-weight: 400; font-size: var(--step-2); line-height: 1.15; }
+.note p { color: var(--muted); }
+@media (max-width: 760px) { .blk-inset figure, .blk-inset .note, .blk-inset.right figure, .blk-inset.right .note { grid-column: 1 / -1; grid-row: auto; text-align: left; justify-items: start; } }
+
+/* staggered row: different widths and vertical offsets */
+.blk-stagger { display: flex; align-items: flex-start; justify-content: center; gap: clamp(12px, 2.4vw, 36px); }
+.blk-stagger figure { margin: 0; min-width: 0; }
+
+/* overlap: big piece with a smaller one over its corner */
+.blk-overlap .ov { position: relative; padding-bottom: 10%; }
+.blk-overlap .big { width: calc(100% - var(--sw, 30%) + 7%); }
+.blk-overlap .small { position: absolute; width: var(--sw, 30%); right: 0; bottom: 0; }
+.blk-overlap.left .big { margin-left: auto; }
+.blk-overlap.left .small { right: auto; left: 0; }
+.blk-overlap .small .shot { box-shadow: 0 40px 70px -20px var(--shadow); }
+
+/* colored panel */
+.panel { border-radius: 6px; padding: clamp(28px, 6vw, 88px) clamp(16px, 5vw, 72px); background: var(--pc, var(--bg-2)); }
+
+/* auto-scrolling strip */
+.blk-strip { overflow: hidden; }
+.strip-track { display: flex; gap: 14px; width: max-content; animation: scroll-left var(--dur, 50s) linear infinite; }
+.blk-strip:hover .strip-track { animation-play-state: paused; }
+.strip-track img { height: clamp(220px, 32vw, 420px); width: auto; border-radius: 3px; }
+@media (prefers-reduced-motion: reduce) { .strip-track { animation: none; } .blk-strip { overflow-x: auto; } }
+
+/* logos panel */
+.blk-logos .panel { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 24px; align-items: center; background: var(--paper); }
+.blk-logos img { width: 100%; }
+.blk-logos .lg-main { grid-row: span 2; }
+@media (max-width: 700px) { .blk-logos .panel { grid-template-columns: 1fr 1fr; } .blk-logos .lg-main { grid-column: 1 / -1; grid-row: auto; } }
+
+.blk-text { display: grid; gap: 14px; max-width: 44rem; }
+.blk-text h3 { font-size: var(--step-2); }
+.blk-text p { color: color-mix(in srgb, var(--fg) 86%, var(--bg)); font-size: 1.0625rem; line-height: 1.65; }
+.pt { display: grid; gap: 2px; margin-top: 6px; padding-left: 16px; border-left: 2px solid var(--accent); }
+.pt .po { font-family: var(--serif); font-style: italic; font-size: 1.45em; line-height: 1.2; color: var(--fg); }
+.pt .en { color: var(--muted); font-size: .95em; }
+
+/* Instagram feed on the brand-yellow panel; the grid tilts flat as it scrolls in */
+.blk-feed .panel { background: #F5C400; color: #17140A; display: grid; justify-items: center; gap: clamp(20px, 3vw, 36px); perspective: 1600px; overflow: hidden; }
+.feed-note { display: grid; gap: 8px; max-width: 38rem; text-align: center; }
+.feed-note h4 { margin: 0; font-family: var(--serif); font-style: italic; font-weight: 400; font-size: var(--step-3); line-height: 1; }
+.feed-note p { color: rgba(23, 20, 10, .78); }
+.feed-grid { width: min(100%, 1080px); border-radius: 10px; background: #0C1014; padding: 6px; box-shadow: 0 60px 90px -40px rgba(60, 40, 0, .6), 0 18px 30px -18px rgba(60, 40, 0, .5); transform-origin: 50% 85%; }
+.feed-grid img { width: 100%; border-radius: 6px; }
+
+/* scroll-driven reveal and parallax, where supported. Without support everything is simply visible. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .rv { animation: rv linear both; animation-timeline: view(); animation-range: entry 0% entry 45%; }
+    @keyframes rv { from { opacity: 0; transform: translateY(70px) scale(.97); } }
+    .blk-bleed .px { animation: px linear both; animation-timeline: view(); animation-range: cover; scale: 1.14; }
+    @keyframes px { from { transform: translateY(-6%); } to { transform: translateY(6%); } }
+    .blk-overlap .small { animation: lift linear both; animation-timeline: view(); animation-range: entry 10% cover 60%; }
+    @keyframes lift { from { transform: translateY(18%); } to { transform: translateY(-6%); } }
+    .feed-grid { animation: tilt linear both; animation-timeline: view(); animation-range: entry 0% cover 50%; }
+    @keyframes tilt { from { transform: rotateX(30deg) rotateZ(-4deg) scale(.88); } to { transform: none; } }
+  }
+}
+
+.case-next .wrap { padding-block: 72px 96px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; border-top: 1px solid var(--line); margin-top: 40px; }
+.case-next small { display: block; color: var(--muted); }
+.case-next strong { font-size: var(--step-2); font-weight: 650; letter-spacing: -.02em; }
+.case-next a { text-decoration: none; }
+.case-next a:hover strong { color: var(--accent); }
+
+/* BR additions */
+.facts { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.lang { min-height: 40px; padding: .5em .9em; font-size: var(--step--1); letter-spacing: .04em; }
+@media (max-width: 480px) { .nav .lang { padding: .5em .7em; } }
+.pt.solo .po { font-size: 1.6em; }
+.blk-film video { width: 100%; border-radius: 3px; background: #000; box-shadow: 0 30px 60px -28px var(--shadow); aspect-ratio: 16 / 9; }
+.more { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 28px; }
+@media (max-width: 980px) { .more { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .more { grid-template-columns: 1fr; } }
+.mini { display: grid; gap: 12px; text-decoration: none; min-width: 0; }
+.mini .media { aspect-ratio: 4 / 3; height: auto !important; }
+.mini h3 { font-size: var(--step-1); }
+.mini p { color: var(--muted); font-size: .9375rem; }
+.mini:hover .media img { transform: scale(1.045); }
+.mini .slug { font-size: var(--step--1); }
+.blk-quad { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(8px, 1.4vw, 18px); }
+@media (max-width: 700px) { .blk-quad { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.blk-quad figure { margin: 0; }
+@media (max-width: 820px) { .nav .lang + .btn { margin-left: 8px; } }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="magosi" viewBox="326 310 1249 415"> <defs><g><g id="mg-0-0"><path d="M 49.859375 -64.5625 L 45.46875 -64.5625 L 45.46875 -34.53125 C 41.609375 -41.0625 34.609375 -44.921875 26.546875 -44.921875 C 14.53125 -44.921875 4.390625 -35.875 4.390625 -21.96875 C 4.390625 -7.984375 14.53125 0.984375 26.546875 0.984375 C 34.609375 0.984375 41.609375 -2.875 45.46875 -9.421875 L 45.46875 0 L 49.859375 0 Z M 27.078125 -2.953125 C 17.03125 -2.953125 8.703125 -10.21875 8.703125 -21.96875 C 8.703125 -33.625 17.03125 -40.984375 27.078125 -40.984375 C 36.5 -40.984375 45.46875 -33.625 45.46875 -21.96875 C 45.46875 -10.21875 36.5 -2.953125 27.078125 -2.953125 Z M 27.078125 -2.953125 "/></g><g id="mg-0-1"><path d="M 48.421875 -23.140625 C 47.96875 -36.140625 39.09375 -44.921875 27.078125 -44.921875 C 15.25 -44.921875 4.390625 -36.046875 4.390625 -21.796875 C 4.390625 -7.625 15.328125 0.984375 26.546875 0.984375 C 36.59375 0.984375 44.125 -3.953125 47.4375 -13.1875 L 43.578125 -14.078125 C 40.4375 -6.28125 34.171875 -2.875 26.546875 -2.875 C 17.75 -2.875 8.875 -9.78125 8.703125 -21.515625 L 48.421875 -21.515625 Z M 27.078125 -40.984375 C 35.953125 -40.984375 42.953125 -35.15625 44.03125 -24.921875 L 8.875 -24.921875 C 10.140625 -35.0625 18.734375 -40.984375 27.078125 -40.984375 Z M 27.078125 -40.984375 "/></g><g id="mg-0-2"><path d="M 4.84375 -12.015625 C 6.015625 -3.765625 13.453125 0.984375 23.765625 0.984375 C 33.8125 0.984375 40.71875 -3.765625 40.71875 -11.921875 C 40.71875 -18.921875 35.234375 -21.515625 29.5 -22.859375 L 18.921875 -25.203125 C 14.171875 -26.28125 10.84375 -27.984375 10.84375 -32.546875 C 10.84375 -37.84375 15.421875 -41.25 22.421875 -41.25 C 29.6875 -41.25 34.53125 -37.578125 35.6875 -32.015625 L 39.71875 -33.09375 C 38.109375 -39.90625 32.109375 -44.921875 22.5 -44.921875 C 13 -44.921875 6.453125 -39.8125 6.453125 -32.28125 C 6.453125 -26.359375 10.3125 -23.140625 17.3125 -21.609375 L 28.0625 -19.28125 C 32.8125 -18.203125 36.40625 -16.3125 36.40625 -11.65625 C 36.40625 -6.015625 31.390625 -2.6875 24.03125 -2.6875 C 15.875 -2.6875 9.78125 -6.546875 9.140625 -13.09375 Z M 4.84375 -12.015625 "/></g><g id="mg-0-3"><path d="M 11.65625 -60.625 C 9.59375 -60.625 8.15625 -59.09375 8.15625 -57.203125 C 8.15625 -55.328125 9.59375 -53.890625 11.65625 -53.890625 C 13.625 -53.890625 15.0625 -55.328125 15.0625 -57.203125 C 15.0625 -59.09375 13.625 -60.625 11.65625 -60.625 Z M 13.8125 0 L 13.8125 -43.84375 L 9.5 -43.84375 L 9.5 0 Z M 13.8125 0 "/></g><g id="mg-0-4"><path d="M 48.421875 -43.84375 L 44.125 -43.84375 L 44.125 -35.515625 C 40.53125 -41.421875 34.171875 -44.828125 26.1875 -44.828125 C 14.4375 -44.828125 4.390625 -36.40625 4.390625 -23.765625 C 4.390625 -11.03125 14.4375 -2.515625 26.1875 -2.515625 C 34.171875 -2.515625 40.53125 -6.015625 44.125 -11.921875 L 44.125 -3.59375 C 44.03125 6.453125 37.21875 13 27.078125 13 C 17.578125 13 12.28125 9.0625 9.328125 2.421875 L 5.46875 4.75 C 8.703125 12.375 15.78125 17.03125 27.078125 17.03125 C 39.8125 17.03125 48.328125 9.234375 48.421875 -3.140625 Z M 26.71875 -6.359375 C 16.859375 -6.359375 8.609375 -13.09375 8.609375 -23.765625 C 8.609375 -34.34375 16.859375 -40.984375 26.71875 -40.984375 C 35.875 -40.984375 44.125 -34.34375 44.125 -23.765625 C 44.125 -13.09375 35.875 -6.359375 26.71875 -6.359375 Z M 26.71875 -6.359375 "/></g><g id="mg-0-5"><path d="M 31.03125 -44.921875 C 22.6875 -44.921875 16.40625 -41.0625 13 -34.53125 L 13 -43.84375 L 8.609375 -43.84375 L 8.609375 0 L 13 0 L 13 -21.96875 C 13 -33.71875 20 -40.796875 30.484375 -40.796875 C 38.734375 -40.796875 44.296875 -34.703125 44.296875 -25.46875 L 44.296875 0 L 48.6875 0 L 48.6875 -26.09375 C 48.6875 -37.296875 41.609375 -44.921875 31.03125 -44.921875 Z M 31.03125 -44.921875 "/></g></g></defs><path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 332.46875 593.808594 L 332.46875 587.167969 L 363.601562 573.050781 L 363.601562 431.078125 L 333.296875 425.269531 L 333.296875 419.039062 L 378.132812 402.851562 L 391 402.851562 L 391 427.757812 C 404.835938 420.84375 416.460938 414.960938 425.871094 410.117188 C 435.277344 405.277344 444.273438 402.851562 452.855469 402.851562 C 462.539062 402.851562 471.328125 405.070312 479.214844 409.492188 C 487.101562 413.921875 492.980469 420.148438 496.859375 428.171875 C 512.355469 420.980469 525.566406 414.960938 536.503906 410.117188 C 547.433594 405.277344 556.222656 402.851562 562.863281 402.851562 C 571.164062 402.851562 579.117188 404.71875 586.734375 408.453125 C 594.339844 412.191406 600.566406 417.585938 605.414062 424.644531 C 610.253906 431.703125 612.679688 440.210938 612.679688 450.175781 L 612.679688 573.050781 L 643.8125 587.167969 L 643.8125 593.808594 L 574.484375 593.808594 L 574.484375 587.167969 L 585.28125 573.050781 L 585.28125 460.96875 C 585.28125 454.882812 583.824219 449.28125 580.921875 444.15625 C 578.015625 439.039062 573.792969 434.816406 568.257812 431.496094 C 562.71875 428.171875 555.941406 426.511719 547.917969 426.511719 C 541.828125 426.511719 534.90625 427.621094 527.160156 429.832031 C 519.410156 432.050781 510.558594 435.09375 500.59375 438.964844 C 501.144531 440.625 501.488281 442.359375 501.632812 444.15625 C 501.769531 445.957031 501.839844 447.960938 501.839844 450.175781 L 501.839844 573.050781 L 532.558594 587.167969 L 532.558594 593.808594 L 463.648438 593.808594 L 463.648438 587.167969 L 474.441406 573.050781 L 474.441406 460.96875 C 474.441406 454.882812 473.054688 449.28125 470.289062 444.15625 C 467.519531 439.039062 463.503906 434.816406 458.25 431.496094 C 452.988281 428.171875 446.484375 426.511719 438.738281 426.511719 C 431.269531 426.511719 424.003906 427.484375 416.945312 429.417969 C 409.890625 431.359375 401.234375 434.398438 391 438.550781 L 391 573.050781 L 421.71875 587.167969 L 421.71875 593.808594 Z M 332.46875 593.808594 "/><path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 727.667969 577.203125 C 733.480469 577.203125 739.773438 576.238281 746.554688 574.296875 C 753.335938 572.363281 761.148438 569.179688 770.011719 564.75 L 770.011719 514.105469 C 766.410156 513.554688 761.292969 513 754.648438 512.445312 C 748.007812 511.894531 740.808594 511.613281 733.0625 511.613281 C 721.164062 511.613281 711.199219 514.382812 703.175781 519.914062 C 695.144531 525.457031 691.136719 533.480469 691.136719 543.992188 C 691.136719 555.894531 695.007812 564.40625 702.761719 569.523438 C 710.503906 574.648438 718.808594 577.203125 727.667969 577.203125 M 717.289062 597.960938 C 707.878906 597.960938 699.296875 596.089844 691.550781 592.355469 C 683.800781 588.621094 677.644531 583.429688 673.078125 576.789062 C 668.511719 570.148438 666.230469 562.675781 666.230469 554.371094 C 666.230469 543.859375 670.515625 534.101562 679.097656 525.105469 C 687.671875 516.117188 699.785156 508.707031 715.421875 502.894531 C 731.054688 497.082031 749.253906 494.042969 770.011719 493.765625 L 770.011719 456.402344 C 770.011719 450.316406 768.484375 444.296875 765.445312 438.34375 C 762.394531 432.394531 757.621094 427.34375 751.121094 423.191406 C 744.617188 419.039062 736.242188 416.964844 726.007812 416.964844 C 725.730469 416.964844 724.828125 417.035156 723.308594 417.171875 C 721.785156 417.316406 720.746094 417.523438 720.195312 417.792969 L 687.398438 452.25 L 678.269531 452.25 L 675.359375 423.191406 C 686.429688 418.488281 695.632812 414.617188 702.96875 411.570312 C 710.296875 408.527344 717.082031 406.316406 723.308594 404.925781 C 729.535156 403.542969 736.386719 402.851562 743.855469 402.851562 C 752.710938 402.851562 761.085938 404.511719 768.972656 407.832031 C 776.859375 411.152344 783.296875 415.925781 788.277344 422.152344 C 793.257812 428.378906 795.75 435.925781 795.75 444.777344 L 795.75 568.070312 L 825.222656 576.371094 L 825.222656 582.183594 L 782.878906 597.960938 L 770.011719 597.960938 L 770.011719 576.371094 C 764.472656 579.695312 758.867188 583.015625 753.199219 586.335938 C 747.523438 589.65625 741.78125 592.425781 735.96875 594.640625 C 730.160156 596.851562 723.933594 597.960938 717.289062 597.960938 "/><path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 925.269531 508.707031 C 934.671875 508.707031 942.289062 506.152344 948.101562 501.027344 C 953.910156 495.910156 956.816406 485.1875 956.816406 468.855469 C 956.816406 450.871094 952.730469 437.511719 944.570312 428.796875 C 936.40625 420.078125 925.125 415.71875 910.738281 415.71875 C 901.046875 415.71875 893.304688 418.488281 887.492188 424.023438 C 881.679688 429.5625 878.773438 440.492188 878.773438 456.816406 C 878.773438 474.53125 882.992188 487.609375 891.4375 496.046875 C 899.875 504.492188 911.152344 508.707031 925.269531 508.707031 M 919.457031 658.570312 C 931.910156 658.570312 942.351562 656.492188 950.796875 652.339844 C 959.238281 648.191406 965.671875 642.859375 970.101562 636.359375 C 974.527344 629.851562 976.742188 623.28125 976.742188 616.640625 C 976.742188 611.378906 975.148438 606.675781 971.96875 602.527344 C 968.785156 598.375 964.011719 594.910156 957.648438 592.148438 C 954.878906 590.765625 950.382812 589.242188 944.15625 587.582031 C 937.929688 585.921875 932.046875 584.402344 926.515625 583.015625 C 924.574219 582.464844 922.636719 581.914062 920.703125 581.355469 C 918.761719 580.804688 916.824219 580.386719 914.890625 580.109375 C 902.707031 588.691406 892.402344 596.921875 883.964844 604.808594 C 875.519531 612.695312 871.300781 620.648438 871.300781 628.679688 C 871.300781 636.421875 875.175781 643.34375 882.925781 649.4375 C 890.667969 655.519531 902.851562 658.570312 919.457031 658.570312 M 902.851562 676.417969 C 882.648438 676.417969 867.421875 672.683594 857.1875 665.210938 C 846.945312 657.738281 841.828125 648.878906 841.828125 638.644531 C 841.828125 632.832031 843.625 627.082031 847.222656 621.414062 C 850.816406 615.738281 857.117188 609.375 866.113281 602.320312 C 875.101562 595.261719 887.90625 586.894531 904.511719 577.203125 C 892.058594 574.160156 883.753906 570.632812 879.605469 566.617188 C 875.453125 562.609375 873.375 557.554688 873.375 551.464844 C 873.375 548.421875 875.101562 544.824219 878.566406 540.671875 C 882.023438 536.519531 889.007812 529.328125 899.53125 519.085938 C 891.5 517.425781 883.683594 514.453125 876.074219 510.160156 C 868.460938 505.875 862.304688 500.0625 857.601562 492.726562 C 852.894531 485.394531 850.542969 476.46875 850.542969 465.949219 C 850.542969 452.664062 854.140625 441.320312 861.339844 431.910156 C 868.53125 422.503906 877.457031 415.375 888.113281 410.53125 C 898.765625 405.691406 909.214844 403.265625 919.457031 403.265625 C 926.929688 403.265625 933.777344 404.03125 940.003906 405.546875 C 946.230469 407.074219 951.835938 409.355469 956.816406 412.398438 L 1014.9375 394.132812 L 1009.121094 427.34375 L 1002.066406 427.34375 L 963.042969 416.550781 C 970.238281 421.8125 975.769531 428.523438 979.648438 436.683594 C 983.523438 444.847656 985.460938 453.496094 985.460938 462.628906 C 985.460938 473.980469 981.789062 484.007812 974.460938 492.726562 C 967.125 501.441406 957.917969 508.226562 946.855469 513.066406 C 935.78125 517.910156 924.292969 520.332031 912.398438 520.332031 L 909.910156 520.332031 C 906.859375 526.144531 904.441406 530.917969 902.644531 534.652344 C 900.839844 538.390625 899.945312 541.367188 899.945312 543.578125 C 899.945312 548.007812 902.363281 551.257812 907.210938 553.332031 C 912.050781 555.410156 920.972656 557.972656 933.984375 561.011719 L 952.25 565.164062 C 966.367188 568.214844 976.878906 571.390625 983.800781 574.710938 C 990.714844 578.035156 995.351562 581.914062 997.707031 586.335938 C 1000.054688 590.765625 1001.238281 596.15625 1001.238281 602.527344 C 1001.238281 610.269531 998.675781 618.4375 993.554688 627.019531 C 988.433594 635.59375 981.375 643.625 972.386719 651.097656 C 963.386719 658.570312 952.9375 664.652344 941.042969 669.363281 C 929.140625 674.0625 916.40625 676.417969 902.851562 676.417969 "/><path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 1129.09375 578.035156 C 1142.652344 578.035156 1153.445312 576.101562 1161.476562 572.222656 C 1169.496094 568.351562 1175.308594 561.5 1178.910156 551.671875 C 1182.503906 541.851562 1184.308594 528.363281 1184.308594 511.199219 C 1184.308594 484.078125 1178.769531 462.628906 1167.699219 446.855469 C 1156.628906 431.078125 1141.269531 423.191406 1121.621094 423.191406 C 1108.339844 423.191406 1097.609375 425.132812 1089.449219 429.003906 C 1081.285156 432.882812 1075.402344 439.589844 1071.808594 449.136719 C 1068.207031 458.683594 1066.410156 472.175781 1066.410156 489.613281 C 1066.410156 516.738281 1072.015625 538.253906 1083.222656 554.164062 C 1094.433594 570.082031 1109.71875 578.035156 1129.09375 578.035156 M 1118.71875 597.960938 C 1102.941406 597.960938 1088.964844 594.082031 1076.789062 586.335938 C 1064.609375 578.59375 1055.132812 567.65625 1048.351562 553.542969 C 1041.570312 539.429688 1038.183594 522.820312 1038.183594 503.726562 C 1038.183594 482.417969 1042.46875 464.222656 1051.050781 449.136719 C 1059.625 434.054688 1071.113281 422.503906 1085.507812 414.472656 C 1099.894531 406.449219 1115.53125 402.4375 1132.414062 402.4375 C 1148.464844 402.4375 1162.441406 406.316406 1174.34375 414.058594 C 1186.238281 421.808594 1195.578125 432.8125 1202.363281 447.0625 C 1209.144531 461.320312 1212.535156 477.988281 1212.535156 497.082031 C 1212.535156 518.121094 1208.242188 536.179688 1199.664062 551.257812 C 1191.085938 566.347656 1179.742188 577.898438 1165.625 585.921875 C 1151.511719 593.945312 1135.871094 597.960938 1118.71875 597.960938 "/><path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 1306.769531 597.960938 C 1298.1875 597.960938 1288.359375 597.265625 1277.292969 595.882812 C 1266.222656 594.496094 1257.367188 592.425781 1250.726562 589.65625 L 1256.539062 554.785156 L 1267.332031 554.785156 L 1288.917969 580.523438 C 1291.410156 581.082031 1294.867188 581.839844 1299.296875 582.808594 C 1303.71875 583.78125 1308.152344 584.261719 1312.582031 584.261719 C 1325.585938 584.261719 1335.828125 581.914062 1343.300781 577.203125 C 1350.773438 572.5 1354.507812 563.648438 1354.507812 550.636719 C 1354.507812 541.78125 1352.019531 534.515625 1347.035156 528.839844 C 1342.054688 523.171875 1332.503906 517.425781 1318.390625 511.613281 L 1297.222656 502.894531 C 1284.488281 497.640625 1274.597656 490.929688 1267.539062 482.761719 C 1260.480469 474.601562 1256.953125 464.703125 1256.953125 453.082031 C 1256.953125 443.949219 1260.203125 435.582031 1266.707031 427.964844 C 1273.207031 420.355469 1281.789062 414.265625 1292.445312 409.699219 C 1303.097656 405.132812 1314.511719 402.851562 1326.695312 402.851562 C 1336.929688 402.851562 1346.6875 403.824219 1355.960938 405.757812 C 1365.230469 407.695312 1372.628906 409.773438 1378.167969 411.984375 L 1372.359375 445.191406 L 1363.226562 445.191406 L 1340.394531 418.625 C 1337.625 418.074219 1334.230469 417.523438 1330.222656 416.964844 C 1326.207031 416.414062 1321.433594 416.136719 1315.902344 416.136719 C 1293.484375 416.136719 1282.277344 425.546875 1282.277344 444.363281 C 1282.277344 454.605469 1285.871094 462.5625 1293.070312 468.234375 C 1300.261719 473.910156 1308.566406 478.683594 1317.976562 482.554688 L 1338.320312 490.855469 C 1351.875 496.117188 1362.460938 502.625 1370.074219 510.367188 C 1377.683594 518.121094 1381.492188 528.632812 1381.492188 541.917969 C 1381.492188 552.710938 1377.683594 562.332031 1370.074219 570.769531 C 1362.460938 579.214844 1352.984375 585.855469 1341.640625 590.695312 C 1330.289062 595.535156 1318.664062 597.960938 1306.769531 597.960938 "/><path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 1411.378906 593.808594 L 1411.378906 587.167969 L 1442.515625 573.050781 L 1442.515625 431.078125 L 1431.648438 425.269531 L 1431.648438 419.039062 L 1457.042969 402.851562 L 1469.914062 402.851562 L 1469.914062 573.050781 L 1499.800781 587.167969 L 1499.800781 593.808594 Z M 1411.378906 593.808594 "/><g fill="currentColor" fill-opacity="1"><use xlink:href="#mg-0-0" x="1085.3799" y="703.4487"/><use xlink:href="#mg-0-1" x="1161.776951" y="703.4487"/><use xlink:href="#mg-0-2" x="1232.435256" y="703.4487"/><use xlink:href="#mg-0-3" x="1295.830461" y="703.4487"/><use xlink:href="#mg-0-4" x="1337.077695" y="703.4487"/><use xlink:href="#mg-0-5" x="1412.04006" y="703.4487"/></g><path fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" stroke-opacity="1" stroke-dasharray="7.943 7.943" stroke-miterlimit="4" d="M 0.000325 -0.00119375 C -2.980144 -0.00119375 -6.585613 0.990994 -10.800456 2.979275 C -15.023113 4.959744 -18.991863 7.565213 -22.714519 10.799588 C -26.437175 14.022244 -29.675456 17.373806 -32.398113 20.854275 C -35.132488 24.323025 -36.495769 27.803494 -36.495769 31.280056 C -36.495769 34.748806 -35.378581 38.600369 -33.144206 42.826931 C -30.909831 47.037869 -28.058269 51.135525 -24.5778 55.115994 C -21.10905 59.084744 -17.503581 62.3074 -13.780925 64.799588 C -10.054363 67.27615 -6.7028 68.522244 -3.722331 68.522244 C -1.245769 68.522244 2.105794 67.522244 6.32845 65.541775 C 10.543294 63.553494 14.64095 60.944119 18.621419 57.721463 C 22.586262 54.487088 25.941731 51.135525 28.676106 47.666775 C 31.398762 44.186306 32.769856 40.709744 32.769856 37.240994 C 32.769856 33.760525 31.527669 29.908963 29.0472 25.694119 C 26.558919 21.471463 23.57845 17.373806 20.1097 13.405056 C 16.629231 9.424588 13.035481 6.201931 9.312825 3.725369 C 5.586262 1.233181 2.480794 -0.00119375 0.000325 -0.00119375 Z M 0.000325 -0.00119375 " transform="matrix(1, 0, 0, -1, 1457.4528, 386.6824)"/><path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 1536.296875 415.335938 C 1533.316406 415.335938 1529.710938 414.34375 1525.496094 412.355469 C 1521.273438 410.375 1517.304688 407.769531 1513.582031 404.535156 C 1509.859375 401.308594 1506.621094 397.960938 1503.898438 394.480469 C 1501.164062 391.011719 1499.800781 387.53125 1499.800781 384.050781 C 1499.800781 380.585938 1500.917969 376.730469 1503.152344 372.507812 C 1505.386719 368.296875 1508.238281 364.199219 1511.71875 360.21875 C 1515.1875 356.25 1518.792969 353.027344 1522.519531 350.535156 C 1526.242188 348.058594 1529.59375 346.8125 1532.574219 346.8125 C 1535.050781 346.8125 1538.402344 347.8125 1542.625 349.792969 C 1546.839844 351.78125 1550.9375 354.386719 1554.917969 357.613281 C 1558.882812 360.847656 1562.238281 364.199219 1564.972656 367.667969 C 1567.695312 371.144531 1569.066406 374.625 1569.066406 378.09375 C 1569.066406 381.574219 1567.824219 385.425781 1565.34375 389.636719 C 1562.855469 393.863281 1559.875 397.960938 1556.40625 401.925781 C 1552.925781 405.90625 1549.332031 409.132812 1545.609375 411.609375 C 1541.882812 414.101562 1538.777344 415.335938 1536.296875 415.335938 "/> </symbol></svg>
+<div class="marble" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Magosi Design, Eliseu Martins. Voltar ao topo">
+      <svg class="magosi" aria-hidden="true"><use href="#magosi"></use></svg>
+      <span>Eliseu Martins<small>Diretor de arte</small></span>
+    </a>
+    <ul>
+      <li><a href="#trabalhos">Trabalhos</a></li>
+      <li><a href="#mais">Mais trabalhos</a></li>
+      <li><a href="#processo">Processo</a></li>
+      <li><a href="#habilidades">Habilidades</a></li>
+    </ul>
+    <a class="btn lang" href="/" hreflang="en" lang="en" aria-label="English version">EN</a>
+    <a class="btn primary" href="#contato">Contato</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <div class="hero-id"><span>Design e marketing desde 2014. Goiânia, GO. Disponível para agências e projetos.</span></div>
+        <h1>Direção de arte que funciona <span class="serif">do outdoor ao feed.</span></h1>
+        <p class="hero-lede">Sou o Eliseu, diretor de arte. Faço campanha, key visual, motion e identidade para saúde, mercado imobiliário, varejo, eventos e restaurantes. Atendo agências e clientes diretos pela Magosi Design, a minha empresa.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#trabalhos">Ver trabalhos</a>
+          <a class="btn" id="hero-wa" href="#contato">Chamar no WhatsApp</a>
+        </div>
+      </div>
+      <div class="marquee" id="marquee" aria-label="Peças do portfólio. Selecione uma para abrir o case."></div>
+    </div>
+  </section>
+
+  <div class="brands">
+    <div class="wrap">
+      <span class="brands-label">Marcas que já atendi</span>
+      <div class="belt" style="--dur:70s"><div class="belt-track" id="logos"></div></div>
+      <div class="belt rev tools" style="--dur:55s"><div class="belt-track" id="tools"></div></div>
+    </div>
+  </div>
+
+  <section class="section light" id="trabalhos">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Trabalhos</h2>
+        <p>Campanhas de agência, eventos e mercado imobiliário. Clique para ver a ideia, as peças e a ficha técnica.</p>
+      </div>
+      <div class="bento" id="bento"></div>
+    </div>
+  </section>
+
+  <section class="section" id="mais">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Mais trabalhos</h2>
+        <p>Restaurante, varejo, saúde, seguros e cervejaria.</p>
+      </div>
+      <div class="more" id="more"></div>
+    </div>
+  </section>
+
+  <section class="section approach" id="processo">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Como um key visual sai do papel</h2>
+        <p>O mesmo processo de agência que aprendi na prática, com a IA como mais uma ferramenta de produção. A direção e o acabamento continuam na minha mão.</p>
+      </div>
+      <ol class="steps">
+        <li><b>1</b><h3>Conceito</h3><p>Ideia, título e rafe alinhados com a redação e com o cliente antes de produzir qualquer coisa.</p></li>
+        <li><b>2</b><h3>Composição</h3><p>Defino enquadramento, ângulo e luz com referência de foto, blocagem 3D ou uma montagem rápida.</p></li>
+        <li><b>3</b><h3>Geração controlada</h3><p>Gero personagens e cenários no Flow e no Magnific, mantendo personagem e produto iguais de uma cena para a outra.</p></li>
+        <li><b>4</b><h3>Acabamento</h3><p>Upscale no Magnific e depois Photoshop: composição, retoque, cor e tipografia.</p></li>
+        <li><b>5</b><h3>Desdobramento</h3><p>Penso o layout para a ideia aguentar todos os formatos: outdoor, telão de estádio, feed, story, landing page.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="habilidades">
+    <div class="wrap">
+      <div class="section-head"><h2>O que eu faço</h2></div>
+      <div class="caps">
+        <div><h3>Direção de arte e campanha</h3><p>Key visual, campanha 360°, mídia exterior e de estádio, direção de foto.</p></div>
+        <div><h3>Marca e identidade</h3><p>Logo, sub-marcas para programas internos, identidade de evento, manual, estampa.</p></div>
+        <div><h3>Imagem com IA</h3><p>Geração de imagem e vídeo no Flow e no Magnific, upscale, composição e retoque.</p></div>
+        <div><h3>Motion e vídeo</h3><p>Motion no After Effects e edição no Premiere: anúncio animado, Reels, Stories e vídeo de marca.</p></div>
+        <div><h3>Digital e performance</h3><p>Anúncio para captar lead, landing page, RD Station (CRM e automação de marketing) e loja Shopify.</p></div>
+      </div>
+      <p class="toolbelt"><strong>Ferramentas:</strong> Photoshop, Illustrator, InDesign, After Effects, Premiere Pro, Figma / Adobe XD, Flow, Magnific, RD Station, Shopify.</p>
+    </div>
+  </section>
+
+  <section class="contact" id="contato">
+    <div class="wrap">
+      <h2>Tem um job, uma vaga ou uma campanha <span class="serif">pra tirar do papel?</span></h2>
+      <p>O jeito mais rápido é o WhatsApp ou o Telegram. Também respondo por e-mail e LinkedIn, normalmente no mesmo dia.</p>
+      <div class="contact-links" id="contact-links"></div>
+      <div class="foot">
+        <svg class="magosi" aria-label="Magosi Design"><use href="#magosi"></use></svg>
+        <span>© 2026 Eliseu Martins, Magosi Design. <a href="/" hreflang="en">English version</a></span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="case" id="case" role="dialog" aria-modal="true" aria-labelledby="case-title" hidden>
+  <div class="case-bar"><div class="wrap"><span id="case-crumb"></span><button class="btn" id="case-close" type="button">Fechar</button></div></div>
+  <div id="case-body"></div>
+</div>
+
+<script>
+const CONTACT = {
+  whatsapp: "5562993439889",
+  whatsappMessage: "Oi, Eliseu! Vi seu portfólio e queria conversar sobre um trabalho.",
+  telegram: "eliseumgs",
+  resume: "/Eliseu-Martins-Senior-Art-Director-Resume.pdf",
+  email: "eliseum.g.silva@gmail.com",
+  linkedin: "https://www.linkedin.com/in/eliseu-martins/",
+  behance: "https://www.behance.net/eliseumartins",
+};
+
+const DIMS = {"v/nt-float":[1280,720],"v/fgr-lp":[1600,900],"v/fgr-escolha":[1280,720],"v/fgr-valor":[720,1280],"p1/coop-escape":[764,1081],"p1/coop-embaixadores":[1920,1080],"p1/coop-recicla":[1920,1080],"p1/coop-saude":[701,876],"p1/coop-conexao":[764,1081],"p1/water-gym":[1920,1080],"p1/coop-bastao":[1920,1080],"p1/coop-medicos":[701,876],"p1/water-kidney":[1920,1080],"p1/heart-drink":[2000,1493],"p1/coop-pecaporpeca":[769,1084],"p1/coop-kv":[1920,1080],"p2/f1-billboard":[1920,1025],"p2/f2-carousel-radio":[1340,595],"p2/f2-carousel-living":[1330,595],"p2/f1-kv":[1920,1080],"p2/f2-screen-goias":[1920,1080],"p2/poplist-tall":[575,1021],"p2/f2-kv-a":[1920,1080],"p2/f2-kv-b":[1920,1080],"p2/f1-poster":[652,921],"p2/poplist":[649,865],"p2/f2-carousel-tv":[1335,595],"p2/f1-banner":[1670,557],"p2/f2-screen-atletico":[1920,1080],"p2/f2-banner-atletico":[1920,1080],"p2/f2-busstop":[1920,1080],"p2/f2-screen-vila":[1920,1080],"p2/f1-poster-wall":[1920,1027],"p2/f2-banner-vila":[1920,1080],"p2/f2-banner-goias":[1920,1080],"br/imob/comemorativa-01":[1200,675],"br/imob/sf4-02":[1200,1452],"br/imob/expand-01":[1200,675],"br/imob/comemorativa-02":[1200,675],"br/imob/stand-02":[1200,2025],"br/imob/expand-02":[1200,1947],"br/imob/comemorativa-03":[1200,1350],"br/imob/sf4-01":[1200,675],"br/imob/stand-01":[1200,675],"br/x/sanchips-01":[1200,1200],"br/x/verao-01":[1200,675],"br/x/mainha-06-post":[466,466],"br/x/mainha-04-post":[466,466],"br/x/marinho-13":[1200,2027],"br/x/verao-05":[1200,675],"br/x/microx-09":[1000,1000],"br/x/mainha-05-post":[466,466],"br/x/mainha-07-post":[466,466],"br/x/mainha-11":[1200,675],"br/x/mainha-02":[1200,675],"br/x/marinho-09":[1200,2027],"br/x/microx-11":[1000,1000],"br/x/verao-07":[850,1512],"br/x/mainha-10":[1200,675],"br/x/mainha-08-post":[466,466],"br/x/marinho-04":[1200,1349],"br/x/sanchips-02":[1200,1200],"br/x/verao-03":[1200,675],"br/x/microx-10":[1000,1000],"br/x/mainha-01":[1200,675],"br/volta/livreto-5":[1600,1131],"br/volta/faixa-4":[1400,663],"br/volta/camiseta-4":[900,893],"br/volta/livreto-7":[1600,1131],"br/volta/livreto-6":[1600,1131],"br/volta/painel-historia":[431,712],"br/volta/contracapa":[1000,1413],"br/volta/painel-campeoes":[521,933],"br/volta/faixa-8":[1400,663],"br/volta/faixa-6":[1400,663],"br/volta/livreto-8":[1600,1131],"br/volta/faixa-3":[1400,663],"br/volta/faixa-7":[1400,663],"br/volta/camiseta-7":[900,893],"br/volta/livreto-3":[1600,1131],"br/volta/livreto-2":[1600,1131],"br/volta/tenda":[1200,361],"br/volta/livreto-4":[1600,1131],"br/volta/capa":[1000,1413],"br/volta/faixa-2":[1400,663],"br/volta/faixa-5":[1400,663],"br/volta/prefeitura":[720,910],"br/volta/selo":[800,818],"br/volta/camiseta-3":[900,893],"br/volta/camiseta-6":[900,893],"br/volta/faixa-1":[1400,663],"br/volta/portico":[580,802],"br/pais/casinha":[960,1280],"br/pais/v-loop":[1280,560],"br/pais/out-pj":[1600,533],"br/pais/rua":[1600,720],"br/pais/jornal":[1076,1575],"br/pais/shopping-b":[960,1280],"br/pais/shopping-a":[960,1280],"br/pais/set-e":[478,850],"br/pais/out-inst":[1600,531],"br/pais/set-a":[1200,900],"br/pais/set-d":[478,850],"br/pais/set-b":[1200,900],"br/pais/out-pf":[1600,734],"br/pais/set-c":[960,1280],"br/pais/evento":[1200,900],"br/pais/filme60":[1280,720],"br/pais/kv":[1600,900],"p3/cannes-story":[720,1280],"p3/berlim-story":[720,1280],"p3/cannes-feed":[1080,1080],"p3/grecia-story":[720,1280],"p3/grecia-feed":[1080,1080],"p3/frankfurt-story":[720,1280],"p3/morar-feed":[1080,1080],"p3/berlim-feed":[1080,1080],"p3/frankfurt-feed-b":[1080,1080],"p3/frankfurt-feed-a":[1080,1080],"p3/morar-story":[720,1280],"p4/logo-nt":[1600,900],"p4/cover":[1200,630],"p4/fist-flatlay":[2000,1116],"p4/logo-symbol":[1600,900],"p4/nt-feed":[1602,1067],"p4/phoenix-editorial":[2000,1116],"p4/jett":[2000,1116],"p4/razaew-beach":[2000,1116],"p4/logo-stacked":[1600,901],"p4/logo-horizontal":[1600,900]};
+const A = "/assets/";
+const full = k => `${A}${k}.webp`;
+const thumb = k => `${A}t/${k.replaceAll("/", "-")}.webp`;
+const isVid = k => k.startsWith("v/") || k.split("/").pop().startsWith("v-");
+const ratio = k => { const d = DIMS[k] || [16, 9]; return d[0] / d[1]; };
+
+const LOGOS = [
+  ["unimed", "Unimed Goiânia", 3.744, 36], ["jeep", "Jeep", 2.481, 36], ["yamaha", "Yamaha", 1, 46],
+  ["opopular", "O Popular", 6.0, 26], ["fgr", "FGR Incorporações", 1.906, 46],
+  ["daqui", "Jornal Daqui", 1.569, 48], ["santa-marta", "Drogaria Santa Marta", 3.881, 38], ["sousa-andrade", "Sousa Andrade", 2.862, 42],
+  ["trinus", "Trinus", 3.163, 32], ["sim", "SIM Engenharia", 2.05, 40], ["expand", "Expand Empreendimentos", 3.144, 40],
+  ["sandella", "Sandella", 2.081, 46],
+];
+const TOOLS = ["Photoshop", "Illustrator", "InDesign", "After Effects", "Premiere Pro", "Figma / Adobe XD", "Flow", "Magnific", "RD Station", "Shopify"];
+
+/* Blocos: bleed, img, inset, stagger, overlap, panel, strip, text, film, quad, feed, logos.
+   text.pt = frase da peça, em destaque. */
+const CASES = [
+  {
+    id: "dia-dos-pais", size: "w7",
+    client: "Unimed Goiânia",
+    title: "Dia dos Pais: Diferentes tempos, o mesmo amor",
+    short: "Dia dos Pais Unimed",
+    summary: "Uma casinha de madeira que o pai construiu no quintal virou o centro da campanha de Dia dos Pais da Unimed Goiânia. Filme na TV, outdoor com aplique, shopping, jornal e digital, de 26 de julho a 31 de agosto.",
+    slug: ["Saúde", "Campanha 360°", "2026"],
+    tags: ["Conceito", "Filme 60\"", "Outdoor com aplique", "Shopping", "Digital"],
+    cover: "br/pais/v-loop",
+    facts: [
+      ["Cliente", "Unimed Goiânia"],
+      ["Agência", "ZF Comunicação"],
+      ["Minha função", "Diretor de arte. Criei a ideia da casinha e o conceito da campanha."],
+      ["Ficha técnica", "Direção de criação: Renata Rezende. Redação: Claudimiro Lino. Produtora: Ação Video. Direção do filme: Luiz Cláudio."],
+    ],
+    blocks: [
+      { t: "film", k: "br/pais/filme60", cap: "Filme institucional de 60 segundos. Dê play para ver com som." },
+      { t: "text", h: "A ideia", p: [
+        "Quase toda família guarda um objeto da infância. Aqui é uma casinha de madeira que o pai construiu no quintal. Anos depois, a filha volta, encontra a casinha ainda de pé e entende que o pai nunca precisou falar muito: o carinho estava em cada tábua e em cada prego.",
+        "O mote liga essa memória à marca. O tempo muda os papéis, agora é a filha quem cuida do pai, e a Unimed Goiânia entra como quem ajuda esse cuidado a continuar."
+      ], pt: ["Diferentes tempos, o mesmo amor."] },
+      { t: "bleed", k: "br/pais/kv", cap: "Key visual institucional" },
+      { t: "text", h: "Outdoor com aplique", p: [
+        "Nas placas de pessoa física e de empresa, a oferta do Mês dos Pais saiu do papel num aplique: carência zero, seguro residencial 24h e descontos que só valiam naquele mês."
+      ] },
+      { t: "img", k: "br/pais/out-pf", w: 100, cap: "Outdoor com aplique, pessoa física." },
+      { t: "img", k: "br/pais/out-inst", w: 84, align: "left", cap: "Outdoor institucional." },
+      { t: "img", k: "br/pais/out-pj", w: 84, align: "right", cap: "Outdoor para empresas." },
+      { t: "inset", k: "br/pais/rua", side: "right", h: "Na rua", p: "Numa avenida de Goiânia: o outdoor com aplique do Dia dos Pais à esquerda e, à direita, a campanha Escolha da FGR, outro trabalho meu." },
+      { t: "text", h: "Mídia", p: [
+        "O teaser anunciou a estreia do filme no intervalo do Fantástico. Depois a campanha ocupou TV, rádio, TV de elevador, painéis de LED, frontlight, outdoor com aplique, busdoor, mídia no shopping, anúncio de página inteira no jornal e LinkedIn, Facebook e Instagram."
+      ] },
+      { t: "stagger", items: [["br/pais/shopping-b", 26, 0], ["br/pais/jornal", 32, 8], ["br/pais/shopping-a", 26, 3]], cap: "Mega banners no shopping e anúncio de jornal de página inteira." },
+      { t: "text", h: "Bastidores", p: [
+        "A casinha foi construída de verdade para a gravação e depois virou cenário das fotos do key visual."
+      ] },
+      { t: "panel", color: "#24543A", items: [["br/pais/casinha", 30, 0], ["br/pais/set-c", 30, 10], ["br/pais/set-e", 22, 4]], cap: "A casinha no set e a gravação com a Ação Video." },
+      { t: "stagger", items: [["br/pais/set-a", 48, 0], ["br/pais/evento", 48, 8]], cap: "Set de filmagem e o filme no telão." },
+    ]
+  },
+  {
+    id: "paz-no-futebol", size: "w5",
+    client: "Unimed Goiânia",
+    title: "Paz no Futebol: um patrocinador, três rivais",
+    short: "Paz no Futebol",
+    summary: "A Unimed Goiânia patrocina Goiás, Vila Nova e Atlético Goianiense, três torcidas que não se bicam. A campanha contra a violência nos estádios rodou em duas fases, no telão, nas placas de campo, em outdoor e nas redes.",
+    slug: ["Esporte", "2 fases", "18 peças"],
+    tags: ["Campanha 360°", "Estádio e OOH", "Direção de foto"],
+    cover: "p2/f2-screen-vila",
+    facts: [
+      ["Cliente", "Unimed Goiânia"],
+      ["Agência", "ZF Comunicação"],
+      ["Minha função", "Diretor de arte"],
+      ["Entregas", "Key visuals, outdoor, cartaz, telão de estádio, placas de campo, abrigo de ônibus, carrossel"],
+    ],
+    blocks: [
+      { t: "bleed", k: "p2/f2-screen-vila", cap: "Telão de estádio, versão Vila Nova" },
+      { t: "text", h: "O desafio", p: [
+        "Falar contra a violência no estádio sem escolher time e sem dar sermão em quem paga o ingresso. Cada fase ganhou uma linguagem visual própria."
+      ] },
+      { t: "text", h: "Fase 1: cartão vermelho para a violência", p: [
+        "Uma bola de jogo gasta num fundo laranja de gramado e o cartão vermelho do juiz reescrito como 'expulse a violência'. Tipografia pesada, textura e os três escudos lado a lado."
+      ], pt: ["Se a violência separa, o respeito aproxima."] },
+      { t: "bleed", k: "p2/f1-kv" },
+      { t: "overlap", big: "p2/f1-billboard", small: "p2/f1-poster", sw: 26, side: "left", cap: "Outdoor e cartaz." },
+      { t: "text", h: "Fase 2: quando é paixão", p: [
+        "A segunda fase troca o símbolo por gente: torcedores rivais em momentos comuns, dos vizinhos ouvindo o jogo no rádio da calçada ao pai e filho no churrasco.",
+        "As linhas brancas do campo são desenhadas por cima de cada foto e enquadram os personagens. Isso dá a mesma estrutura a todo formato, do telão 16:9 ao carrossel panorâmico."
+      ], pt: ["Quando é paixão, a violência que saia de campo."] },
+      { t: "img", k: "p2/f2-kv-a", w: 100 },
+      { t: "inset", k: "p2/f2-kv-b", side: "right", h: "Rivais lado a lado", p: "Cada key visual junta torcedores de dois times no mesmo quadro, para nenhum clube ficar de fora." },
+      { t: "strip", ks: ["p2/f2-carousel-radio", "p2/f2-carousel-tv", "p2/f2-carousel-living"], cap: "Carrosséis panorâmicos no Instagram." },
+      { t: "stagger", items: [["p2/f2-screen-goias", 48, 0], ["p2/f2-screen-atletico", 48, 9]], cap: "Telões para Goiás e Atlético Goianiense." },
+      { t: "panel", color: "#3B2E63", items: [["p2/f2-banner-goias", 30, 0], ["p2/f2-banner-vila", 30, 7], ["p2/f2-banner-atletico", 30, 14]], cap: "Placas de campo, uma por clube." },
+      { t: "bleed", k: "p2/f2-busstop", cap: "Abrigo de ônibus" },
+      { t: "text", h: "Também para a Unimed: Pop List", p: [
+        "Anúncio dos 34 anos como plano de saúde mais lembrado de Goiânia na pesquisa Pop List. A resposta para 'qual era o plano' é um par de sapatinhos verdes de tricô."
+      ], pt: ["Perguntaram qual era o plano."] },
+      { t: "stagger", small: true, items: [["p2/poplist", 26, 0], ["p2/poplist-tall", 21, 8]], cap: "Dois formatos." },
+    ]
+  },
+  {
+    id: "volta-motociclistica", size: "w5",
+    client: "Image Hunter Expedições",
+    title: "Volta Motociclística de Goiânia",
+    short: "Volta Motociclística",
+    summary: "Com a MotoGP de volta ao Brasil e uma etapa em Goiânia, a Image Hunter criou um passeio de moto pelos cartões-postais da cidade. Fiz a identidade do evento e o livreto que apresentou o projeto a patrocinadores e à Prefeitura.",
+    slug: ["Evento", "Identidade", "2026"],
+    tags: ["Identidade de evento", "Livreto de patrocínio", "Sinalização", "Camisetas"],
+    cover: "br/volta/livreto-3",
+    facts: [
+      ["Cliente", "Image Hunter Expedições"],
+      ["Feito por", "Magosi Design"],
+      ["Minha função", "Identidade visual, livreto A4, camisetas, faixas e painéis do evento"],
+      ["Parceiros do evento", "Bräuhaus, MotoGO, Bougainville, Ducati Goiânia, Belcar Yamaha, Prefeitura de Goiânia, Detran-GO e outros"],
+    ],
+    blocks: [
+      { t: "inset", k: "br/volta/selo", side: "right", narrow: true, h: "O selo", p: "Um piloto deitado na curva dentro de um selo de motovelocidade, em azul, vermelho e branco. Funciona sozinho em camiseta, faixa e avatar." },
+      { t: "text", h: "O livreto que vendeu o evento", p: [
+        "Antes de ter patrocínio, o evento precisava ser vendido. Montei um livreto A4 com a proposta inteira: homenagem aos campeões, local do grid, programação, trajeto pelos cartões-postais e contrapartidas para quem entrasse.",
+        "Foi esse material que circulou entre os patrocinadores e na reunião com a Prefeitura de Goiânia, com o prefeito Sandro Mabel."
+      ], pt: ["Goiânia dá as boas-vindas ao retorno da motovelocidade."] },
+      { t: "stagger", items: [["br/volta/capa", 30, 0], ["br/volta/contracapa", 30, 10]], cap: "Capa e contracapa do livreto." },
+      { t: "strip", ks: ["br/volta/livreto-3", "br/volta/livreto-4", "br/volta/livreto-6", "br/volta/livreto-7", "br/volta/livreto-8", "br/volta/livreto-5"], cap: "Páginas do livreto: tributo aos campeões, grid, programação, largada e chegada, trajeto." },
+      { t: "inset", k: "br/volta/prefeitura", side: "left", narrow: true, h: "Na Prefeitura", p: "O livreto na mesa da reunião de apresentação do projeto." },
+      { t: "text", h: "No evento", p: [
+        "Faixas de gradil de 1,90 x 0,90 m com toda a cota de patrocínio, painéis de homenagem aos campeões, pórtico de largada e tenda."
+      ], pt: ["A história do motociclismo mundial vive em Goiânia."] },
+      { t: "strip", ks: ["br/volta/faixa-1", "br/volta/faixa-2", "br/volta/faixa-4", "br/volta/faixa-5", "br/volta/faixa-7", "br/volta/faixa-8"], dur: 40, cap: "Faixas de gradil." },
+      { t: "stagger", items: [["br/volta/painel-historia", 26, 0], ["br/volta/painel-campeoes", 30, 8], ["br/volta/portico", 32, 2]], cap: "Painéis de homenagem e pórtico de largada." },
+      { t: "img", k: "br/volta/tenda", w: 100, cap: "Tenda da Image Hunter." },
+      { t: "panel", color: "#1B3A7A", items: [["br/volta/camiseta-3", 30, 0], ["br/volta/camiseta-4", 30, 10], ["br/volta/camiseta-7", 30, 4]], cap: "Opções de camiseta do passeio." },
+    ]
+  },
+  {
+    id: "imobiliario", size: "w7",
+    client: "FGR, Expand, Trinus e outros",
+    title: "Mercado imobiliário: do lançamento ao lead",
+    short: "Imobiliário",
+    summary: "Anúncio, landing page, outdoor, stand de vendas e campanha comemorativa para incorporadoras e loteamentos em Goiás, Mato Grosso e Bahia.",
+    slug: ["Imobiliário", "6 projetos"],
+    tags: ["Anúncio e landing page", "Lançamento", "Stand de vendas", "Motion"],
+    cover: "v/fgr-escolha",
+    facts: [
+      ["Clientes", "FGR Incorporações, Expand Empreendimentos, Trinus e SIM Incorporadora, Golden Dolphin, Loteamento São Francisco 4"],
+      ["Minha função", "Diretor de arte. FGR pela Magosi Design."],
+      ["Entregas", "Anúncio de feed e story, landing page, motion, outdoor, identidade de loteamento, stand e material gráfico"],
+    ],
+    blocks: [
+      { t: "img", k: "v/fgr-lp", w: 100, cap: "FGR: landing page Oportunidade Casas, desktop e celular, feita no RD Station." },
+      { t: "text", h: "FGR Jardins", p: [
+        "A FGR vende casas em vários condomínios Jardins ao mesmo tempo, cada um numa fase. Tem quem queira mudar já e tem quem compre na planta. Cada anúncio abre com a oferta certa para esse comprador e leva para uma página que pede o contato na primeira tela."
+      ], pt: ["Troque o aluguel pelo planejamento da sua própria casa."] },
+      { t: "panel", color: "#1C4E8C", items: [["p3/frankfurt-feed-a", 34, 10], ["p3/frankfurt-story", 26, 0], ["p3/frankfurt-feed-b", 34, 16]], cap: "Jardins Frankfurt, feed e story." },
+      { t: "overlap", big: "p3/grecia-feed", small: "p3/grecia-story", sw: 30, cap: "Jardins Grécia." },
+      { t: "inset", k: "v/fgr-escolha", side: "right", h: "Escolha", p: "Filme dos 40 anos da FGR, que também foi para outdoor." },
+      { t: "inset", k: "v/fgr-valor", side: "left", narrow: true, h: "Valor 1000", p: "A FGR entre as mil maiores empresas do Brasil e a maior do Centro-Oeste." },
+      { t: "text", h: "Expand: Sinop 50 anos", p: [
+        "Campanha da Expand Empreendimentos para os 50 anos de Sinop (MT): homenagem à força, à coragem e à visão de futuro de quem construiu a cidade."
+      ], pt: ["Sinopense com orgulho."] },
+      { t: "bleed", k: "br/imob/expand-01" },
+      { t: "img", k: "br/imob/expand-02", w: 70, cap: "Outdoor e posts da campanha." },
+      { t: "text", h: "Loteamento São Francisco 4", p: [
+        "Identidade, outdoor, landing page e materiais de venda para um loteamento em Senador Canedo."
+      ], pt: ["Bairro de viver mais alegre."] },
+      { t: "overlap", big: "br/imob/sf4-01", small: "br/imob/sf4-02", sw: 34, cap: "Marca e materiais do São Francisco 4." },
+      { t: "text", h: "140 Wellness Marista", p: [
+        "Identidade do stand de vendas do 140 Wellness Marista, da SIM Incorporadora com a Trinus: fachada, decorado, wind banners e material gráfico de venda."
+      ] },
+      { t: "img", k: "br/imob/stand-01", w: 100 },
+      { t: "img", k: "br/imob/stand-02", w: 64, align: "right", cap: "Stand de vendas e materiais gráficos." },
+      { t: "text", h: "Golden Dolphin: Temporada Good Vibes", p: [
+        "Campanha comemorativa de um ano de operação do Golden Dolphin Condo Beach, em Porto Seguro, com convite VIP, redes e tapumes."
+      ] },
+      { t: "stagger", items: [["br/imob/comemorativa-02", 52, 0], ["br/imob/comemorativa-03", 40, 6]], cap: "Key visual e desdobramentos." },
+    ]
+  },
+  {
+    id: "unimed-ia", size: "w5",
+    client: "Unimed Goiânia",
+    title: "Mundos em miniatura e personagens 3D para a Unimed",
+    short: "Unimed + IA",
+    summary: "Duas campanhas institucionais com imagem 3D feita com IA e finalizada no Photoshop: o Ano Internacional das Cooperativas e o Dia Mundial da Água.",
+    slug: ["Saúde", "2 campanhas", "12 peças"],
+    tags: ["Key visual", "Personagens 3D", "Imagem com IA", "Redes"],
+    cover: "p1/heart-drink",
+    facts: [
+      ["Cliente", "Unimed Goiânia"],
+      ["Agência", "ZF Comunicação"],
+      ["Minha função", "Diretor de arte e produção de imagem com IA (Flow, Magnific, Photoshop)"],
+    ],
+    blocks: [
+      { t: "img", k: "p1/heart-drink", w: 100 },
+      { t: "text", h: "Dia Mundial da Água", p: [
+        "Um lembrete de hidratação que não parecesse mais um anúncio de saúde com foto de banco de imagem. Os órgãos viraram personagens: um coração em pânico no meio do treino e um rim carregando um balde de pedras pela própria sala."
+      ], pt: ["Sem água, seu corpo trava."] },
+      { t: "img", k: "p1/water-gym", w: 100 },
+      { t: "inset", k: "p1/water-kidney", side: "left", h: "O rim", p: "Segundo key visual: o mesmo tipo de sala, outro personagem." },
+      { t: "text", h: "Cada peça conta", p: [
+        "A ONU declarou 2025 o Ano Internacional das Cooperativas. A Unimed Goiânia, cooperativa de quase 3.000 médicos, precisava de uma campanha que falasse com médicos, colaboradores e comunidade ao mesmo tempo. A resposta foi um quebra-cabeça montado por gente em miniatura."
+      ], pt: ["Cada peça conta na construção do futuro."] },
+      { t: "bleed", k: "p1/coop-kv" },
+      { t: "stagger", items: [["p1/coop-saude", 34, 0], ["p1/coop-medicos", 28, 14], ["p1/coop-pecaporpeca", 30, 4]], cap: "Cartazes da campanha." },
+      { t: "panel", color: "#1F5C46", items: [["p1/coop-escape", 22, 8], ["p1/coop-recicla", 50, 0], ["p1/coop-conexao", 22, 16]], cap: "Programas internos: Escape Coop, Recicla e Transforma, Desafio Conexão Coop." },
+    ]
+  },
+  {
+    id: "ntshop", size: "w7",
+    client: "NT SHOP, marca própria",
+    title: "NT SHOP: uma marca de streetwear do zero",
+    short: "NT SHOP",
+    summary: "Minha marca de roupa, nascida da cultura gamer e do streetwear. Desenhei o logo e todas as estampas, faço o lookbook com IA e cuido da loja online, que imprime sob demanda.",
+    slug: ["Streetwear", "Autoral"],
+    tags: ["Marca", "Estampas", "Lookbook com IA", "E-commerce"],
+    cover: "p4/jett",
+    facts: [
+      ["Marca", "NT SHOP (NiceTry)"],
+      ["Minha função", "Fundador e diretor de criação"],
+      ["Entregas", "Logo, estampas, lookbook em foto e vídeo, redes e loja online"],
+    ],
+    blocks: [
+      { t: "bleed", k: "v/nt-float" },
+      { t: "text", h: "A marca", p: [
+        "NT vem de NiceTry. O símbolo são dois curativos cruzados com borda de spray, em amarelo e preto, e funciona como logo completo, sigla ou símbolo sozinho."
+      ] },
+      { t: "logos", ks: ["p4/logo-horizontal", "p4/logo-nt", "p4/logo-stacked", "p4/logo-symbol", "p4/cover"], cap: "Sistema de logo e a imagem de compartilhamento da loja." },
+      { t: "feed", k: "p4/nt-feed", h: "O feed pensado como grade", p: "Cada linha do perfil é uma imagem panorâmica dividida em três posts, então o perfil vira um lookbook.", cap: "@ntshop.nicetry no Instagram." },
+      { t: "bleed", k: "p4/jett", cap: "Camisas e moletom em vitrine, sem sessão de fotos" },
+      { t: "overlap", big: "p4/phoenix-editorial", small: "p4/fist-flatlay", sw: 40, side: "left", cap: "Editorial de camiseta oversized e flat lay." },
+    ]
+  },
+  /* Mais trabalhos: abrem no mesmo visualizador */
+  {
+    id: "mainha", more: true,
+    client: "Mainha Restaurante",
+    title: "Mainha: rebranding de restaurante caipira",
+    short: "Mainha Restaurante",
+    summary: "Restaurante de comida caipira na beira da BR-050. Redesenhei a marca a partir da ilustração da própria Mainha e criei a linha das redes, com legenda no sotaque da casa.",
+    slug: ["Restaurante", "Rebranding"],
+    cover: "br/x/mainha-01",
+    facts: [["Cliente", "Mainha Restaurante"], ["Entregas", "Marca, posts, uniforme e brindes"]],
+    blocks: [
+      { t: "bleed", k: "br/x/mainha-01" },
+      { t: "text", h: "A marca", p: ["A ilustração da Mainha foi refinada e ganhou um brasão no lugar do antigo selo de 'Delícias caipira'. O jeito rústico continuou, só que com cara de família."], pt: ["Mió que bão, só seno barato."] },
+      { t: "img", k: "br/x/mainha-02", w: 100 },
+      { t: "quad", ks: ["br/x/mainha-04-post", "br/x/mainha-05-post", "br/x/mainha-06-post", "br/x/mainha-07-post", "br/x/mainha-08-post"], cap: "Posts. As legendas seguem o mesmo sotaque." },
+      { t: "stagger", items: [["br/x/mainha-10", 48, 0], ["br/x/mainha-11", 48, 8]], cap: "Uniforme e canecas." },
+    ]
+  },
+  {
+    id: "san-chips", more: true,
+    client: "San Chips",
+    title: "San Chips: grade de Instagram para lançamento",
+    short: "San Chips",
+    summary: "Lançamento de três sabores de batata frita com grade panorâmica no Instagram, frases de humor e muita cor.",
+    slug: ["Varejo", "Redes sociais"],
+    cover: "br/x/sanchips-02",
+    facts: [["Cliente", "San Chips"], ["Entregas", "Grade de Instagram e posts de lançamento"]],
+    blocks: [
+      { t: "stagger", items: [["br/x/sanchips-01", 48, 0], ["br/x/sanchips-02", 48, 8]], cap: "Duas grades: pessoas reais na primeira, ilustração na segunda." },
+    ]
+  },
+  {
+    id: "vai-ter-verao", more: true,
+    client: "Dr. Guilherme Corradi",
+    title: "#VaiTerVerão: campanha de verão para medicina esportiva",
+    short: "#VaiTerVerão",
+    summary: "Campanha de verão de um médico do esporte, com revista, cangas, brindes e redes.",
+    slug: ["Saúde", "Campanha"],
+    cover: "br/x/verao-01",
+    facts: [["Cliente", "Dr. Guilherme Corradi"], ["Entregas", "Key visual, anúncio de revista, cangas e posts"]],
+    blocks: [
+      { t: "bleed", k: "br/x/verao-01" },
+      { t: "img", k: "br/x/verao-03", w: 100, cap: "Conceito e anúncio de revista." },
+      { t: "stagger", items: [["br/x/verao-05", 60, 4], ["br/x/verao-07", 28, 0]], cap: "Cangas e post." },
+    ]
+  },
+  {
+    id: "marinho", more: true,
+    client: "Marinho Corretora de Seguros",
+    title: "Marinho Seguros: landing pages por produto",
+    short: "Marinho Seguros",
+    summary: "Uma landing page para cada seguro (saúde, auto e agrícola), com a mesma estrutura de captação e uma imagem forte no topo.",
+    slug: ["Seguros", "Landing pages"],
+    cover: "br/x/marinho-04",
+    facts: [["Cliente", "Marinho Corretora de Seguros"], ["Entregas", "Landing pages e campanhas digitais"]],
+    blocks: [
+      { t: "stagger", items: [["br/x/marinho-04", 31, 0], ["br/x/marinho-09", 31, 6], ["br/x/marinho-13", 31, 2]], cap: "Saúde, auto e agrícola." },
+    ]
+  },
+  {
+    id: "micro-x", more: true,
+    client: "Micro X Cervejaria",
+    title: "Micro X: posts para cervejaria artesanal",
+    short: "Micro X",
+    summary: "Posts de rótulo e de data comemorativa para uma cervejaria artesanal, cada um com a personalidade da cerveja.",
+    slug: ["Bebidas", "Redes sociais"],
+    cover: "br/x/microx-11",
+    facts: [["Cliente", "Micro X Cervejaria"], ["Entregas", "Posts para redes sociais"]],
+    blocks: [
+      { t: "stagger", items: [["br/x/microx-09", 31, 0], ["br/x/microx-10", 31, 6], ["br/x/microx-11", 31, 2]], cap: "Angel Tripel, 61 IPA e Noite no Cerrado." },
+    ]
+  },
+];
+const MAIN = CASES.filter(c => !c.more);
+const MORE = CASES.filter(c => c.more);
+
+const EXTRA = {"x-goias-social": [640, 360], "x-sandella": [640, 905]};
+const MARQUEE = [
+  [["br/pais/kv", "dia-dos-pais"], ["br/volta/capa", "volta-motociclistica"], ["p2/f2-kv-a", "paz-no-futebol"], ["br/x/mainha-06-post", "mainha"], ["br/imob/expand-01", "imobiliario"], ["x-goias-social"], ["p1/coop-medicos", "unimed-ia"], ["br/x/sanchips-01", "san-chips"], ["p3/grecia-feed", "imobiliario"]],
+  [["br/pais/jornal", "dia-dos-pais"], ["br/volta/camiseta-4", "volta-motociclistica"], ["p2/poplist", "paz-no-futebol"], ["br/x/verao-07", "vai-ter-verao"], ["br/imob/sf4-02", "imobiliario"], ["x-sandella"], ["br/x/microx-10", "micro-x"], ["p1/water-gym", "unimed-ia"], ["p4/fist-flatlay", "ntshop"]],
+  [["br/pais/out-pf", "dia-dos-pais"], ["br/volta/selo", "volta-motociclistica"], ["p2/f2-screen-goias", "paz-no-futebol"], ["br/x/mainha-08-post", "mainha"], ["br/imob/stand-02", "imobiliario"], ["p1/heart-drink", "unimed-ia"], ["br/x/marinho-04", "marinho"], ["br/volta/livreto-3", "volta-motociclistica"], ["p3/frankfurt-story", "imobiliario"]],
+];
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const imgTag = (k, src, alt, lazy = true, cls = "") => {
+  const [w, h] = DIMS[k] || [16, 9];
+  return `<img${cls ? ` class="${cls}"` : ""} src="${src}" width="${w}" height="${h}" alt="${esc(alt)}"${lazy ? ' loading="lazy"' : ""} decoding="async">`;
+};
+const vidTag = (k, label, auto, cls = "") => {
+  const [w, h] = DIMS[k] || [16, 9];
+  return `<video${cls ? ` class="${cls}"` : ""} src="${A}${k}.mp4" poster="${A}${k}.webp" width="${w}" height="${h}" muted loop playsinline preload="metadata"${auto ? " autoplay" : " data-inview"} aria-label="${esc(label)}"></video>`;
+};
+const media = (k, alt, opts = {}) => isVid(k) ? vidTag(k, alt, opts.auto, opts.cls) : imgTag(k, full(k), alt, opts.lazy !== false, opts.cls);
+
+const durations = [110, 128, 100];
+document.getElementById("marquee").innerHTML = MARQUEE.map((col, i) => {
+  const items = col.map(([k, id]) => {
+    if (!id) {
+      const [w, h] = EXTRA[k];
+      return `<div><img src="${A}t/${k}.webp" width="${w}" height="${h}" alt="Peça de campanha" decoding="async"></div>`;
+    }
+    const c = CASES.find(x => x.id === id);
+    return `<a href="#${id}" tabindex="-1">${imgTag(k, thumb(k), c.short, false)}</a>`;
+  }).join("");
+  return `<div class="col${i === 1 ? " down" : ""}"><div class="track" style="--dur:${durations[i]}s">${items}${items.replaceAll('alt="', 'aria-hidden="true" alt="')}</div></div>`;
+}).join("");
+
+const logoHTML = LOGOS.map(([f, name, r, h]) => `<span class="logo" role="img" aria-label="${esc(name)}" style="--m:url(${A}logos/${f}.png);--r:${r};--h:${h}px"></span>`).join("");
+document.getElementById("logos").innerHTML = logoHTML + logoHTML.replaceAll('role="img"', 'aria-hidden="true"');
+const toolHTML = TOOLS.map(t => `<span>${esc(t)}</span>`).join("");
+document.getElementById("tools").innerHTML = toolHTML + toolHTML.replaceAll("<span>", '<span aria-hidden="true">');
+
+document.getElementById("bento").innerHTML = MAIN.map(c => `
+  <a class="card ${c.size}" href="#${c.id}">
+    <div class="frame"><div class="media">${media(c.cover, c.short, { auto: true })}<span class="pill">Ver case</span></div></div>
+    <div class="card-meta">
+      <div class="slug"><span>${esc(c.client)}</span>${c.slug.map(s => `<span>${esc(s)}</span>`).join("")}</div>
+      <h3>${esc(c.title)}</h3>
+      <p>${esc(c.summary)}</p>
+      <ul class="tags">${c.tags.map(t => `<li>${esc(t)}</li>`).join("")}</ul>
+    </div>
+  </a>`).join("");
+
+document.getElementById("more").innerHTML = MORE.map(c => `
+  <a class="mini" href="#${c.id}">
+    <div class="frame"><div class="media">${media(c.cover, c.short)}</div></div>
+    <div class="card-meta">
+      <div class="slug"><span>${esc(c.client)}</span>${c.slug.map(s => `<span>${esc(s)}</span>`).join("")}</div>
+      <h3>${esc(c.title)}</h3>
+      <p>${esc(c.summary)}</p>
+    </div>
+  </a>`).join("");
+
+const WA_ICON = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.6-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1 2.7.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>';
+const TG_ICON = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.2-8.3c.4-.4-.1-.6-.6-.2L6.2 13.1l-4.9-1.5c-1.1-.3-1.1-1 .2-1.5L20.6 2.8c.9-.3 1.6.2 1.3 1.5Z"/></svg>';
+(() => {
+  const L = [];
+  const wa = CONTACT.whatsapp.replace(/\D/g, "");
+  const waUrl = `https://wa.me/${wa}?text=${encodeURIComponent(CONTACT.whatsappMessage)}`;
+  const MAIL_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>';
+  const IN_ICON = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.6c0-1.3 0-3-1.9-3s-2.2 1.5-2.2 2.9V21h-4V9Z"/></svg>';
+  if (wa) {
+    L.push(`<a class="btn primary" href="${waUrl}" target="_blank" rel="noopener">${WA_ICON}WhatsApp</a>`);
+    const h = document.getElementById("hero-wa"); h.href = waUrl; h.target = "_blank"; h.rel = "noopener";
+  }
+  if (CONTACT.telegram) L.push(`<a class="btn" href="https://t.me/${esc(CONTACT.telegram)}" target="_blank" rel="noopener">${TG_ICON}Telegram</a>`);
+  if (CONTACT.email) {
+    L.push(`<a class="btn alt" href="mailto:${esc(CONTACT.email)}">${MAIL_ICON}${esc(CONTACT.email)}</a>`);
+    L.push(`<button class="btn" type="button" id="copy-email">Copiar e-mail</button>`);
+  }
+  if (CONTACT.linkedin) L.push(`<a class="btn" href="${esc(CONTACT.linkedin)}" target="_blank" rel="noopener">${IN_ICON}LinkedIn</a>`);
+  if (CONTACT.behance) L.push(`<a class="btn" href="${esc(CONTACT.behance)}" target="_blank" rel="noopener">Behance</a>`);
+  if (CONTACT.resume) L.push(`<a class="btn" href="${esc(CONTACT.resume)}" target="_blank" rel="noopener">Currículo (PDF, em inglês)</a>`);
+  document.getElementById("contact-links").innerHTML = L.join("");
+  const copyBtn = document.getElementById("copy-email");
+  if (copyBtn) copyBtn.addEventListener("click", () => {
+    const done = () => { copyBtn.textContent = "Copiado"; copyBtn.classList.add("copied"); setTimeout(() => { copyBtn.textContent = "Copiar e-mail"; copyBtn.classList.remove("copied"); }, 2000); };
+    const fallback = () => { const t = document.createElement("textarea"); t.value = CONTACT.email; document.body.appendChild(t); t.select(); let ok = false; try { ok = document.execCommand("copy"); } catch (e) {} t.remove(); if (ok) done(); else copyBtn.textContent = CONTACT.email; };
+    try { navigator.clipboard.writeText(CONTACT.email).then(done, fallback); } catch (e) { fallback(); }
+  });
+})();
+
+/* Visualizador de case */
+const caseEl = document.getElementById("case");
+const bodyEl = document.getElementById("case-body");
+let lastFocus = null, lastScroll = 0, vidObs = null;
+
+const fig = (k, alt, cap) => `<figure class="rv" style="margin:0">${media(k, alt, { cls: "shot" })}${cap ? `<figcaption class="cap">${esc(cap)}</figcaption>` : ""}</figure>`;
+const staggerHTML = (items, alt) => items.map(([k, w, dy]) => `<figure class="rv" style="width:${w}%;margin-top:${dy}%">${media(k, alt, { cls: "shot" })}</figure>`).join("");
+
+function renderBlock(b, c) {
+  const cap = b.cap ? `<p class="cap">${esc(b.cap)}</p>` : "";
+  const alt = b.cap || c.short;
+  switch (b.t) {
+    case "text":
+      return `<div class="blk"><div class="blk-text rv"><h3>${esc(b.h)}</h3>${b.p.map(p => `<p>${esc(p)}</p>`).join("")}${b.pt ? `<p class="pt solo"><span class="po">${esc(b.pt[0])}</span></p>` : ""}</div></div>`;
+    case "film": {
+      const [w, h] = DIMS[b.k] || [16, 9];
+      return `<div class="blk blk-film"><video src="${A}${b.k}.mp4" poster="${A}${b.k}.webp" width="${w}" height="${h}" controls playsinline preload="none" aria-label="${esc(alt)}"></video>${cap}</div>`;
+    }
+    case "bleed":
+      return `<div class="blk-bleed" style="--ar:${ratio(b.k).toFixed(4)}">${media(b.k, alt, { cls: "px" })}${b.cap ? `<span class="cap">${esc(b.cap)}</span>` : ""}</div>`;
+    case "img":
+      return `<div class="blk"><div class="blk-img ${b.align || "center"}" style="--w:${b.w || 100}%">${fig(b.k, alt, b.cap)}</div></div>`;
+    case "inset":
+      return `<div class="blk"><div class="blk-inset ${b.side === "right" ? "right" : ""}">
+        <figure class="rv"${b.narrow ? ' style="max-width:420px;justify-self:center"' : ""}>${media(b.k, b.h, { cls: "shot" })}</figure>
+        <div class="note rv"><h4>${esc(b.h)}</h4><p>${esc(b.p)}</p></div></div></div>`;
+    case "stagger":
+      return `<div class="blk"><div class="blk-stagger">${staggerHTML(b.items, alt)}</div>${cap}</div>`;
+    case "quad":
+      return `<div class="blk"><div class="blk-quad">${b.ks.map(k => `<figure class="rv">${media(k, alt, { cls: "shot" })}</figure>`).join("")}</div>${cap}</div>`;
+    case "overlap":
+      return `<div class="blk"><div class="blk-overlap ${b.side === "left" ? "left" : ""}"><div class="ov" style="--sw:${b.sw || 30}%">
+        <figure class="big rv" style="margin:0">${media(b.big, alt, { cls: "shot" })}</figure>
+        <figure class="small" style="margin:0">${media(b.small, alt, { cls: "shot" })}</figure>
+      </div></div>${cap}</div>`;
+    case "panel":
+      return `<div class="blk"><div class="panel rv" style="--pc:${b.color}"><div class="blk-stagger">${staggerHTML(b.items, alt)}</div></div>${cap}</div>`;
+    case "strip": {
+      const imgs = b.ks.map(k => imgTag(k, full(k), alt)).join("");
+      return `<div class="blk-strip"><div class="strip-track" style="--dur:${b.dur || 46}s">${imgs}${imgs.replaceAll("<img ", '<img aria-hidden="true" ')}</div></div><div class="blk" style="margin-top:-40px">${cap}</div>`;
+    }
+    case "feed":
+      return `<div class="blk blk-feed"><div class="panel"><div class="feed-note rv"><h4>${esc(b.h)}</h4><p>${esc(b.p)}</p></div><div class="feed-grid">${imgTag(b.k, full(b.k), b.h)}</div></div>${cap}</div>`;
+    case "logos":
+      return `<div class="blk blk-logos"><div class="panel rv">${b.ks.map((k, i) => imgTag(k, full(k), "Logo NT SHOP", true, i === 0 ? "lg-main" : "")).join("")}</div>${cap}</div>`;
+  }
+  return "";
+}
+
+function watchVideos() {
+  if (vidObs) vidObs.disconnect();
+  const vids = bodyEl.querySelectorAll("video[data-inview]");
+  if (!("IntersectionObserver" in window)) { vids.forEach(v => { v.autoplay = true; v.play().catch(() => {}); }); return; }
+  vidObs = new IntersectionObserver(entries => entries.forEach(e => {
+    const v = e.target;
+    if (e.isIntersecting) { if (!v.dataset.started) { v.currentTime = 0; v.dataset.started = "1"; } v.play().catch(() => {}); }
+    else v.pause();
+  }), { root: caseEl, threshold: 0.45 });
+  vids.forEach(v => vidObs.observe(v));
+}
+
+function openCase(id) {
+  const list = CASES.find(c => c.id === id)?.more ? MORE : MAIN;
+  const i = list.findIndex(c => c.id === id);
+  if (i < 0) return closeCase(false);
+  const c = list[i], next = list[(i + 1) % list.length];
+  if (caseEl.hidden) { lastFocus = document.activeElement; lastScroll = window.scrollY; }
+  document.getElementById("case-crumb").textContent = `${c.client}  /  ${c.short}`;
+  bodyEl.innerHTML = `
+    <header class="case-head"><div class="wrap">
+      <div class="slug">${c.slug.map(s => `<span>${esc(s)}</span>`).join("")}</div>
+      <h2 id="case-title">${esc(c.title)}</h2>
+      <p class="lede">${esc(c.summary)}</p>
+      <dl class="facts">${c.facts.map(([t, d]) => `<div><dt>${esc(t)}</dt><dd>${esc(d)}</dd></div>`).join("")}</dl>
+    </div></header>
+    <div class="blocks">${c.blocks.map(b => renderBlock(b, c)).join("")}</div>
+    <nav class="case-next" aria-label="Próximo case"><div class="wrap">
+      <a href="#${next.id}"><small>Próximo</small><strong>${esc(next.title)}</strong></a>
+      <a class="btn primary" href="#contato" data-close>Vamos conversar</a>
+    </div></nav>`;
+  caseEl.hidden = false;
+  caseEl.scrollTop = 0;
+  document.documentElement.style.overflow = "hidden";
+  watchVideos();
+  document.getElementById("case-close").focus({ preventScroll: true });
+}
+
+function closeCase(clearHash = true) {
+  if (caseEl.hidden) return;
+  if (vidObs) vidObs.disconnect();
+  bodyEl.querySelectorAll("video").forEach(v => v.pause());
+  caseEl.hidden = true;
+  bodyEl.innerHTML = "";
+  document.documentElement.style.overflow = "";
+  if (clearHash && CASES.some(c => "#" + c.id === location.hash)) {
+    try { history.replaceState(null, "", location.pathname + location.search); } catch (e) { location.hash = "trabalhos"; }
+  }
+  window.scrollTo({ top: lastScroll, behavior: "instant" });
+  if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+}
+
+function route() {
+  const id = location.hash.slice(1);
+  if (CASES.some(c => c.id === id)) openCase(id);
+  else if (!caseEl.hidden) { closeCase(false); if (id) document.getElementById(id)?.scrollIntoView(); }
+}
+window.addEventListener("hashchange", route);
+document.getElementById("case-close").addEventListener("click", () => closeCase());
+document.addEventListener("keydown", e => { if (e.key === "Escape" && !caseEl.hidden) closeCase(); });
+caseEl.addEventListener("click", e => {
+  const a = e.target.closest("a[data-close]");
+  if (a) { e.preventDefault(); closeCase(); document.getElementById("contato").scrollIntoView(); }
+});
+route();
+</script>
+
+</body>
+</html>
