@@ -313,6 +313,21 @@ p { margin: 0; }
 .case-next a { text-decoration: none; }
 .case-next a:hover strong { color: var(--accent); }
 
+/* Showcase: interactive animation in an iframe */
+.showcase { background: radial-gradient(90% 70% at 85% 30%, rgba(19, 128, 74, .28), transparent 60%), #0B1A14; color: #F4F8EF; --muted: rgba(244, 248, 239, .66); --line: rgba(244, 248, 239, .14); }
+.showcase .wrap { display: grid; gap: 40px; align-items: center; }
+@media (min-width: 980px) { .showcase .wrap { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 72px; } }
+.sc-copy { display: grid; gap: 22px; min-width: 0; }
+.sc-kicker { font-size: var(--step--1); letter-spacing: .14em; text-transform: uppercase; color: #B5D334; font-weight: 600; }
+.sc-copy h2 { font-size: var(--step-3); }
+.sc-copy p { color: var(--muted); font-size: var(--step-1); max-width: 34em; }
+.sc-steps { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+.sc-steps li { border: 1px solid rgba(181, 211, 52, .5); color: #B5D334; border-radius: 999px; padding: .35em .9em; font-size: var(--step--1); font-weight: 600; }
+.sc-hint { display: flex; align-items: center; gap: 10px; font-size: var(--step--1) !important; color: var(--muted); }
+.sc-hint svg { width: 22px; height: 22px; flex: none; color: #B5D334; }
+.sc-frame { position: relative; justify-self: center; width: min(100%, 560px); aspect-ratio: 4 / 5; border-radius: 18px; overflow: hidden; background: #03170C; box-shadow: 0 40px 90px -40px rgba(0, 0, 0, .8); }
+.sc-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+
 /* BR additions */
 .facts { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
 .lang { min-height: 40px; padding: .5em .9em; font-size: var(--step--1); letter-spacing: .04em; }
@@ -328,10 +343,25 @@ p { margin: 0; }
 .mini p { color: var(--muted); font-size: .9375rem; }
 .mini:hover .media img { transform: scale(1.045); }
 .mini .slug { font-size: var(--step--1); }
-.blk-quad { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(8px, 1.4vw, 18px); }
+.blk-quad { display: grid; grid-template-columns: repeat(var(--cols, 5), minmax(0, 1fr)); gap: clamp(8px, 1.4vw, 18px); }
 @media (max-width: 700px) { .blk-quad { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .blk-quad figure { margin: 0; }
 @media (max-width: 820px) { .nav .lang + .btn { margin-left: 8px; } }
+
+/* Showcase: interactive animation in an iframe */
+.showcase { background: radial-gradient(90% 70% at 85% 30%, rgba(19, 128, 74, .28), transparent 60%), #0B1A14; color: #F4F8EF; --muted: rgba(244, 248, 239, .66); --line: rgba(244, 248, 239, .14); }
+.showcase .wrap { display: grid; gap: 40px; align-items: center; }
+@media (min-width: 980px) { .showcase .wrap { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 72px; } }
+.sc-copy { display: grid; gap: 22px; min-width: 0; }
+.sc-kicker { font-size: var(--step--1); letter-spacing: .14em; text-transform: uppercase; color: #B5D334; font-weight: 600; }
+.sc-copy h2 { font-size: var(--step-3); }
+.sc-copy p { color: var(--muted); font-size: var(--step-1); max-width: 34em; }
+.sc-steps { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+.sc-steps li { border: 1px solid rgba(181, 211, 52, .5); color: #B5D334; border-radius: 999px; padding: .35em .9em; font-size: var(--step--1); font-weight: 600; }
+.sc-hint { display: flex; align-items: center; gap: 10px; font-size: var(--step--1) !important; color: var(--muted); }
+.sc-hint svg { width: 22px; height: 22px; flex: none; color: #B5D334; }
+.sc-frame { position: relative; justify-self: center; width: min(100%, 560px); aspect-ratio: 4 / 5; border-radius: 18px; overflow: hidden; background: #03170C; box-shadow: 0 40px 90px -40px rgba(0, 0, 0, .8); }
+.sc-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
 </style>
 </head>
 <body>
@@ -346,6 +376,7 @@ p { margin: 0; }
     </a>
     <ul>
       <li><a href="#trabalhos">Trabalhos</a></li>
+      <li><a href="#destaque">Destaque</a></li>
       <li><a href="#mais">Mais trabalhos</a></li>
       <li><a href="#processo">Processo</a></li>
       <li><a href="#habilidades">Habilidades</a></li>
@@ -361,7 +392,7 @@ p { margin: 0; }
       <div class="hero-copy">
         <div class="hero-id"><span>Design e marketing desde 2014. Goiânia, GO. Disponível para agências e projetos.</span></div>
         <h1>Direção de arte que funciona <span class="serif">do outdoor ao feed.</span></h1>
-        <p class="hero-lede">Sou o Eliseu, diretor de arte. Faço campanha, key visual, motion e identidade para saúde, mercado imobiliário, varejo, eventos e restaurantes. Atendo agências e clientes diretos pela Magosi Design, a minha empresa.</p>
+        <p class="hero-lede">Sou o Eliseu, diretor de arte. Faço campanha, key visual, motion e identidade para saúde, mercado imobiliário, varejo, eventos e restaurantes. Atendo agências e clientes diretos pela Magosi Design.</p>
         <div class="hero-actions">
           <a class="btn primary" href="#trabalhos">Ver trabalhos</a>
           <a class="btn" id="hero-wa" href="#contato">Chamar no WhatsApp</a>
@@ -389,11 +420,24 @@ p { margin: 0; }
     </div>
   </section>
 
+  <section class="section showcase" id="destaque">
+    <div class="wrap">
+      <div class="sc-copy">
+        <span class="sc-kicker">Destaque · Unimed Goiânia</span>
+        <h2>Do moodboard à peça final, <span class="serif">com IA no processo.</span></h2>
+        <p>Na Pesquisa de Materialidade da Unimed Goiânia, uma campanha para cinco públicos, cada imagem passou pelas mesmas etapas: referência, prompt, geração no Flow e no Magnific, upscale e finalização no Photoshop. São 14 peças em 8 formatos.</p>
+        <ul class="sc-steps"><li>Referência</li><li>Prompt</li><li>Geração</li><li>Upscale</li><li>Finalização</li></ul>
+        <p class="sc-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11m0-1.5a1.5 1.5 0 0 1 3 0V11m0-.5a1.5 1.5 0 0 1 3 0V15a6 6 0 0 1-6 6h-.6a6 6 0 0 1-4.6-2.2L4.2 15.6a1.6 1.6 0 0 1 2.4-2.1L9 15.5"/><path d="M3 5h3M3 5l1.5-1.5M3 5l1.5 1.5M21 5h-3m3 0-1.5-1.5M21 5l-1.5 1.5"/></svg>Arraste sobre a animação para avançar ou voltar. Clique para pausar.</p>
+      </div>
+      <div class="sc-frame"><iframe id="sc-iframe" src="/showcase/materialidade.html?embed=1" title="Animação do processo da Pesquisa de Materialidade" loading="lazy"></iframe></div>
+    </div>
+  </section>
+
   <section class="section" id="mais">
     <div class="wrap">
       <div class="section-head">
         <h2>Mais trabalhos</h2>
-        <p>Restaurante, varejo, saúde, seguros e cervejaria.</p>
+        <p>Restaurante, agro, saúde, seguros e cervejaria. Os vídeos mostram um pouco do meu motion.</p>
       </div>
       <div class="more" id="more"></div>
     </div>
@@ -425,7 +469,7 @@ p { margin: 0; }
         <div><h3>Motion e vídeo</h3><p>Motion no After Effects e edição no Premiere: anúncio animado, Reels, Stories e vídeo de marca.</p></div>
         <div><h3>Digital e performance</h3><p>Anúncio para captar lead, landing page, RD Station (CRM e automação de marketing) e loja Shopify.</p></div>
       </div>
-      <p class="toolbelt"><strong>Ferramentas:</strong> Photoshop, Illustrator, InDesign, After Effects, Premiere Pro, Figma / Adobe XD, Flow, Magnific, RD Station, Shopify.</p>
+      <p class="toolbelt"><strong>Ferramentas:</strong> Photoshop, Illustrator, InDesign, After Effects, Premiere Pro, Figma / Adobe XD, Flow, Magnific, Claude, RD Station, Shopify.</p>
     </div>
   </section>
 
@@ -458,7 +502,7 @@ const CONTACT = {
   behance: "https://www.behance.net/eliseumartins",
 };
 
-const DIMS = {"v/nt-float":[1280,720],"v/fgr-lp":[1600,900],"v/fgr-escolha":[1280,720],"v/fgr-valor":[720,1280],"p1/coop-escape":[764,1081],"p1/coop-embaixadores":[1920,1080],"p1/coop-recicla":[1920,1080],"p1/coop-saude":[701,876],"p1/coop-conexao":[764,1081],"p1/water-gym":[1920,1080],"p1/coop-bastao":[1920,1080],"p1/coop-medicos":[701,876],"p1/water-kidney":[1920,1080],"p1/heart-drink":[2000,1493],"p1/coop-pecaporpeca":[769,1084],"p1/coop-kv":[1920,1080],"p2/f1-billboard":[1920,1025],"p2/f2-carousel-radio":[1340,595],"p2/f2-carousel-living":[1330,595],"p2/f1-kv":[1920,1080],"p2/f2-screen-goias":[1920,1080],"p2/poplist-tall":[575,1021],"p2/f2-kv-a":[1920,1080],"p2/f2-kv-b":[1920,1080],"p2/f1-poster":[652,921],"p2/poplist":[649,865],"p2/f2-carousel-tv":[1335,595],"p2/f1-banner":[1670,557],"p2/f2-screen-atletico":[1920,1080],"p2/f2-banner-atletico":[1920,1080],"p2/f2-busstop":[1920,1080],"p2/f2-screen-vila":[1920,1080],"p2/f1-poster-wall":[1920,1027],"p2/f2-banner-vila":[1920,1080],"p2/f2-banner-goias":[1920,1080],"br/imob/comemorativa-01":[1200,675],"br/imob/sf4-02":[1200,1452],"br/imob/expand-01":[1200,675],"br/imob/comemorativa-02":[1200,675],"br/imob/stand-02":[1200,2025],"br/imob/expand-02":[1200,1947],"br/imob/comemorativa-03":[1200,1350],"br/imob/sf4-01":[1200,675],"br/imob/stand-01":[1200,675],"br/x/sanchips-01":[1200,1200],"br/x/verao-01":[1200,675],"br/x/mainha-06-post":[466,466],"br/x/mainha-04-post":[466,466],"br/x/marinho-13":[1200,2027],"br/x/verao-05":[1200,675],"br/x/microx-09":[1000,1000],"br/x/mainha-05-post":[466,466],"br/x/mainha-07-post":[466,466],"br/x/mainha-11":[1200,675],"br/x/mainha-02":[1200,675],"br/x/marinho-09":[1200,2027],"br/x/microx-11":[1000,1000],"br/x/verao-07":[850,1512],"br/x/mainha-10":[1200,675],"br/x/mainha-08-post":[466,466],"br/x/marinho-04":[1200,1349],"br/x/sanchips-02":[1200,1200],"br/x/verao-03":[1200,675],"br/x/microx-10":[1000,1000],"br/x/mainha-01":[1200,675],"br/volta/livreto-5":[1600,1131],"br/volta/faixa-4":[1400,663],"br/volta/camiseta-4":[900,893],"br/volta/livreto-7":[1600,1131],"br/volta/livreto-6":[1600,1131],"br/volta/painel-historia":[431,712],"br/volta/contracapa":[1000,1413],"br/volta/painel-campeoes":[521,933],"br/volta/faixa-8":[1400,663],"br/volta/faixa-6":[1400,663],"br/volta/livreto-8":[1600,1131],"br/volta/faixa-3":[1400,663],"br/volta/faixa-7":[1400,663],"br/volta/camiseta-7":[900,893],"br/volta/livreto-3":[1600,1131],"br/volta/livreto-2":[1600,1131],"br/volta/tenda":[1200,361],"br/volta/livreto-4":[1600,1131],"br/volta/capa":[1000,1413],"br/volta/faixa-2":[1400,663],"br/volta/faixa-5":[1400,663],"br/volta/prefeitura":[720,910],"br/volta/selo":[800,818],"br/volta/camiseta-3":[900,893],"br/volta/camiseta-6":[900,893],"br/volta/faixa-1":[1400,663],"br/volta/portico":[580,802],"br/pais/casinha":[960,1280],"br/pais/v-loop":[1280,560],"br/pais/out-pj":[1600,533],"br/pais/rua":[1600,720],"br/pais/jornal":[1076,1575],"br/pais/shopping-b":[960,1280],"br/pais/shopping-a":[960,1280],"br/pais/set-e":[478,850],"br/pais/out-inst":[1600,531],"br/pais/set-a":[1200,900],"br/pais/set-d":[478,850],"br/pais/set-b":[1200,900],"br/pais/out-pf":[1600,734],"br/pais/set-c":[960,1280],"br/pais/evento":[1200,900],"br/pais/filme60":[1280,720],"br/pais/kv":[1600,900],"p3/cannes-story":[720,1280],"p3/berlim-story":[720,1280],"p3/cannes-feed":[1080,1080],"p3/grecia-story":[720,1280],"p3/grecia-feed":[1080,1080],"p3/frankfurt-story":[720,1280],"p3/morar-feed":[1080,1080],"p3/berlim-feed":[1080,1080],"p3/frankfurt-feed-b":[1080,1080],"p3/frankfurt-feed-a":[1080,1080],"p3/morar-story":[720,1280],"p4/logo-nt":[1600,900],"p4/cover":[1200,630],"p4/fist-flatlay":[2000,1116],"p4/logo-symbol":[1600,900],"p4/nt-feed":[1602,1067],"p4/phoenix-editorial":[2000,1116],"p4/jett":[2000,1116],"p4/razaew-beach":[2000,1116],"p4/logo-stacked":[1600,901],"p4/logo-horizontal":[1600,900]};
+const DIMS = {"v/nt-float":[1280,720],"v/fgr-lp":[1600,900],"v/fgr-escolha":[1280,720],"v/fgr-valor":[720,1280],"p1/coop-escape":[764,1081],"p1/coop-embaixadores":[1920,1080],"p1/coop-recicla":[1920,1080],"p1/coop-saude":[701,876],"p1/coop-conexao":[764,1081],"p1/water-gym":[1920,1080],"p1/coop-bastao":[1920,1080],"p1/coop-medicos":[701,876],"p1/water-kidney":[1920,1080],"p1/heart-drink":[2000,1493],"p1/coop-pecaporpeca":[769,1084],"p1/coop-kv":[1920,1080],"p2/f1-billboard":[1920,1025],"p2/f2-carousel-radio":[1340,595],"p2/f2-carousel-living":[1330,595],"p2/f1-kv":[1920,1080],"p2/f2-screen-goias":[1920,1080],"p2/poplist-tall":[575,1021],"p2/f2-kv-a":[1920,1080],"p2/f2-kv-b":[1920,1080],"p2/f1-poster":[652,921],"p2/poplist":[649,865],"p2/f2-carousel-tv":[1335,595],"p2/f1-banner":[1670,557],"p2/f2-screen-atletico":[1920,1080],"p2/f2-banner-atletico":[1920,1080],"p2/f2-busstop":[1920,1080],"p2/f2-screen-vila":[1920,1080],"p2/poplist-odonto":[1080,1350],"p2/f1-poster-wall":[1920,1027],"p2/f2-banner-vila":[1920,1080],"p2/f2-banner-goias":[1920,1080],"br/imob/comemorativa-01":[1200,675],"br/imob/sf4-02":[1200,1452],"br/imob/expand-01":[1200,675],"br/imob/comemorativa-02":[1200,675],"br/imob/stand-02":[1200,2025],"br/imob/expand-02":[1200,1947],"br/imob/comemorativa-03":[1200,1350],"br/imob/sf4-01":[1200,675],"br/imob/stand-01":[1200,675],"br/x/marinho-lavoura":[900,900],"br/x/sanchips-01":[1200,1200],"br/x/mainha-p-mio":[900,900],"br/x/verao-01":[1200,675],"br/x/mainha-06-post":[466,466],"br/x/mainha-p-miseria":[900,900],"br/x/mainha-p-coracao":[900,900],"br/x/mainha-plano-07":[1400,788],"br/x/mainha-04-post":[466,466],"br/x/marinho-13":[1200,2027],"br/x/verao-05":[1200,675],"br/x/microx-09":[1000,1000],"br/x/mainha-05-post":[466,466],"br/x/mainha-07-post":[466,466],"br/x/mainha-11":[1200,675],"br/x/mainha-02":[1200,675],"br/x/marinho-09":[1200,2027],"br/x/mainha-plano-03":[1400,788],"br/x/mainha-p-feijao":[900,900],"br/x/mainha-avatar":[900,900],"br/x/microx-11":[1000,1000],"br/x/marinho-chuva":[900,900],"br/x/mainha-p-bbb":[900,900],"br/x/mainha-plano-05":[1400,788],"br/x/verao-07":[850,1512],"br/x/mainha-plano-08":[1400,788],"br/x/mainha-10":[1200,675],"br/x/mainha-feed-a":[900,743],"br/x/mainha-tagline":[900,1600],"br/x/mainha-08-post":[466,466],"br/x/mainha-feed-b":[900,893],"br/x/mainha-p-escuta":[900,900],"br/x/v-unigraos-a":[720,900],"br/x/marinho-04":[1200,1349],"br/x/v-unigraos-b":[720,900],"br/x/sanchips-02":[1200,1200],"br/x/verao-03":[1200,675],"br/x/v-marinho-auto":[720,720],"br/x/mainha-plano-02":[1400,788],"br/x/microx-10":[1000,1000],"br/x/mainha-01":[1200,675],"br/volta/livreto-5":[1600,1131],"br/volta/faixa-4":[1400,663],"br/volta/camiseta-4":[900,893],"br/volta/livreto-7":[1600,1131],"br/volta/livreto-6":[1600,1131],"br/volta/painel-historia":[431,712],"br/volta/contracapa":[1000,1413],"br/volta/painel-campeoes":[521,933],"br/volta/faixa-8":[1400,663],"br/volta/faixa-6":[1400,663],"br/volta/livreto-8":[1600,1131],"br/volta/faixa-3":[1400,663],"br/volta/faixa-7":[1400,663],"br/volta/camiseta-7":[900,893],"br/volta/livreto-3":[1600,1131],"br/volta/livreto-2":[1600,1131],"br/volta/tenda":[1200,361],"br/volta/livreto-4":[1600,1131],"br/volta/capa":[1000,1413],"br/volta/faixa-2":[1400,663],"br/volta/faixa-5":[1400,663],"br/volta/prefeitura":[720,910],"br/volta/selo":[800,818],"br/volta/camiseta-3":[900,893],"br/volta/camiseta-6":[900,893],"br/volta/faixa-1":[1400,663],"br/volta/portico":[580,802],"br/pais/casinha":[960,1280],"br/pais/v-loop":[1280,560],"br/pais/out-pj":[1600,533],"br/pais/rua":[1600,720],"br/pais/jornal":[1076,1575],"br/pais/shopping-b":[960,1280],"br/pais/shopping-a":[960,1280],"br/pais/set-e":[478,850],"br/pais/out-inst":[1600,531],"br/pais/set-a":[1200,900],"br/pais/set-d":[478,850],"br/pais/set-b":[1200,900],"br/pais/out-pf":[1600,734],"br/pais/set-c":[960,1280],"br/pais/evento":[1200,900],"br/pais/filme60":[1280,720],"br/pais/kv":[1600,900],"p3/cannes-story":[720,1280],"p3/berlim-story":[720,1280],"p3/cannes-feed":[1080,1080],"p3/grecia-story":[720,1280],"p3/grecia-feed":[1080,1080],"p3/frankfurt-story":[720,1280],"p3/morar-feed":[1080,1080],"p3/berlim-feed":[1080,1080],"p3/frankfurt-feed-b":[1080,1080],"p3/frankfurt-feed-a":[1080,1080],"p3/morar-story":[720,1280],"p4/logo-nt":[1600,900],"p4/cover":[1200,630],"p4/fist-flatlay":[2000,1116],"p4/logo-symbol":[1600,900],"p4/nt-feed":[1602,1067],"p4/phoenix-editorial":[2000,1116],"p4/jett":[2000,1116],"p4/razaew-beach":[2000,1116],"p4/logo-stacked":[1600,901],"p4/logo-horizontal":[1600,900]};
 const A = "/assets/";
 const full = k => `${A}${k}.webp`;
 const thumb = k => `${A}t/${k.replaceAll("/", "-")}.webp`;
@@ -472,7 +516,7 @@ const LOGOS = [
   ["trinus", "Trinus", 3.163, 32], ["sim", "SIM Engenharia", 2.05, 40], ["expand", "Expand Empreendimentos", 3.144, 40],
   ["sandella", "Sandella", 2.081, 46],
 ];
-const TOOLS = ["Photoshop", "Illustrator", "InDesign", "After Effects", "Premiere Pro", "Figma / Adobe XD", "Flow", "Magnific", "RD Station", "Shopify"];
+const TOOLS = ["Photoshop", "Illustrator", "InDesign", "After Effects", "Premiere Pro", "Figma / Adobe XD", "Flow", "Magnific", "Claude", "RD Station", "Shopify"];
 
 /* Blocos: bleed, img, inset, stagger, overlap, panel, strip, text, film, quad, feed, logos.
    text.pt = frase da peça, em destaque. */
@@ -553,9 +597,10 @@ const CASES = [
       { t: "panel", color: "#3B2E63", items: [["p2/f2-banner-goias", 30, 0], ["p2/f2-banner-vila", 30, 7], ["p2/f2-banner-atletico", 30, 14]], cap: "Placas de campo, uma por clube." },
       { t: "bleed", k: "p2/f2-busstop", cap: "Abrigo de ônibus" },
       { t: "text", h: "Também para a Unimed: Pop List", p: [
-        "Anúncio dos 34 anos como plano de saúde mais lembrado de Goiânia na pesquisa Pop List. A resposta para 'qual era o plano' é um par de sapatinhos verdes de tricô."
+        "Anúncio dos 34 anos como plano de saúde mais lembrado de Goiânia na pesquisa Pop List. A resposta para 'qual era o plano' é um par de sapatinhos verdes de tricô.",
+        "E para a Unimed Odonto, o plano odontológico mais lembrado pelos goianienses, um sorriso aberto no lugar do produto."
       ], pt: ["Perguntaram qual era o plano."] },
-      { t: "stagger", small: true, items: [["p2/poplist", 26, 0], ["p2/poplist-tall", 21, 8]], cap: "Dois formatos." },
+      { t: "stagger", small: true, items: [["p2/poplist", 26, 0], ["p2/poplist-tall", 21, 8], ["p2/poplist-odonto", 26, 3]], cap: "Unimed Goiânia em dois formatos e Unimed Odonto: 'Gente com saúde vive sorrindo'." },
     ]
   },
   {
@@ -692,31 +737,34 @@ const CASES = [
   {
     id: "mainha", more: true,
     client: "Mainha Restaurante",
-    title: "Mainha: rebranding de restaurante caipira",
+    title: "Mainha: rebranding e plano de comunicação de restaurante caipira",
     short: "Mainha Restaurante",
-    summary: "Restaurante de comida caipira na beira da BR-050. Redesenhei a marca a partir da ilustração da própria Mainha e criei a linha das redes, com legenda no sotaque da casa.",
-    slug: ["Restaurante", "Rebranding"],
-    cover: "br/x/mainha-01",
-    facts: [["Cliente", "Mainha Restaurante"], ["Entregas", "Marca, posts, uniforme e brindes"]],
+    summary: "Restaurante de comida caipira na beira da BR-050. Redesenhei a marca a partir da ilustração da própria Mainha, escrevi o plano de comunicação e criei a linha das redes, com legenda no sotaque da casa.",
+    slug: ["Restaurante", "Rebranding", "Redes sociais"],
+    cover: "br/x/mainha-p-miseria",
+    facts: [["Cliente", "Mainha Restaurante"], ["Entregas", "Marca, plano de comunicação, posts, capa e avatar das redes, uniforme e brindes"]],
     blocks: [
       { t: "bleed", k: "br/x/mainha-01" },
       { t: "text", h: "A marca", p: ["A ilustração da Mainha foi refinada e ganhou um brasão no lugar do antigo selo de 'Delícias caipira'. O jeito rústico continuou, só que com cara de família."], pt: ["Mió que bão, só seno barato."] },
       { t: "img", k: "br/x/mainha-02", w: 100 },
-      { t: "quad", ks: ["br/x/mainha-04-post", "br/x/mainha-05-post", "br/x/mainha-06-post", "br/x/mainha-07-post", "br/x/mainha-08-post"], cap: "Posts. As legendas seguem o mesmo sotaque." },
+      { t: "text", h: "Plano de comunicação", p: ["O plano partiu de uma pergunta: por que caipira? A resposta virou o tom de tudo. Falar caipirês sem caricatura, contar a história da casa, deixar o preço sempre à vista e dividir o conteúdo entre cardápio, marca e o quadro 'Escuta a Mainha'."] },
+      { t: "strip", ks: ["br/x/mainha-plano-02", "br/x/mainha-plano-03", "br/x/mainha-plano-05", "br/x/mainha-plano-07", "br/x/mainha-plano-08"], dur: 44, cap: "Páginas do plano de comunicação." },
+      { t: "quad", cols: 3, ks: ["br/x/mainha-p-miseria", "br/x/mainha-p-mio", "br/x/mainha-p-bbb", "br/x/mainha-p-escuta", "br/x/mainha-p-feijao", "br/x/mainha-p-coracao"], cap: "Posts da campanha de rotina, do cardápio e da marca." },
+      { t: "stagger", items: [["br/x/mainha-feed-b", 46, 0], ["br/x/mainha-tagline", 26, 6]], cap: "O feed com a nova identidade e a tagline." },
       { t: "stagger", items: [["br/x/mainha-10", 48, 0], ["br/x/mainha-11", 48, 8]], cap: "Uniforme e canecas." },
     ]
   },
   {
-    id: "san-chips", more: true,
-    client: "San Chips",
-    title: "San Chips: grade de Instagram para lançamento",
-    short: "San Chips",
-    summary: "Lançamento de três sabores de batata frita com grade panorâmica no Instagram, frases de humor e muita cor.",
-    slug: ["Varejo", "Redes sociais"],
-    cover: "br/x/sanchips-02",
-    facts: [["Cliente", "San Chips"], ["Entregas", "Grade de Instagram e posts de lançamento"]],
+    id: "uni-graos", more: true,
+    client: "Uni Grãos",
+    title: "Uni Grãos: motion para redes",
+    short: "Uni Grãos",
+    summary: "Dois vídeos de 15 segundos para uma empresa de silagem embalada a vácuo. Pergunta direta na abertura, o produto no meio e a marca no fim.",
+    slug: ["Agro", "Motion"],
+    cover: "br/x/v-unigraos-b",
+    facts: [["Cliente", "Uni Grãos"], ["Entregas", "Motion para feed, formato 4:5"]],
     blocks: [
-      { t: "stagger", items: [["br/x/sanchips-01", 48, 0], ["br/x/sanchips-02", 48, 8]], cap: "Duas grades: pessoas reais na primeira, ilustração na segunda." },
+      { t: "stagger", items: [["br/x/v-unigraos-b", 40, 0], ["br/x/v-unigraos-a", 40, 8]], cap: "'A silagem estragou?' e 'Medo de comprar rações e perdê-las com o tempo?'" },
     ]
   },
   {
@@ -737,14 +785,15 @@ const CASES = [
   {
     id: "marinho", more: true,
     client: "Marinho Corretora de Seguros",
-    title: "Marinho Seguros: landing pages por produto",
+    title: "Marinho Seguros: landing pages, posts e motion",
     short: "Marinho Seguros",
-    summary: "Uma landing page para cada seguro (saúde, auto e agrícola), com a mesma estrutura de captação e uma imagem forte no topo.",
+    summary: "Uma landing page para cada seguro (saúde, auto e agrícola), com a mesma estrutura de captação, mais posts e motion para as redes.",
     slug: ["Seguros", "Landing pages"],
     cover: "br/x/marinho-04",
-    facts: [["Cliente", "Marinho Corretora de Seguros"], ["Entregas", "Landing pages e campanhas digitais"]],
+    facts: [["Cliente", "Marinho Corretora de Seguros"], ["Entregas", "Landing pages, posts e motion"]],
     blocks: [
-      { t: "stagger", items: [["br/x/marinho-04", 31, 0], ["br/x/marinho-09", 31, 6], ["br/x/marinho-13", 31, 2]], cap: "Saúde, auto e agrícola." },
+      { t: "stagger", items: [["br/x/marinho-04", 31, 0], ["br/x/marinho-09", 31, 6], ["br/x/marinho-13", 31, 2]], cap: "Landing pages: saúde, auto e agrícola." },
+      { t: "stagger", items: [["br/x/v-marinho-auto", 30, 4], ["br/x/marinho-chuva", 30, 0], ["br/x/marinho-lavoura", 30, 8]], cap: "Motion do seguro auto e posts do seguro agrícola." },
     ]
   },
   {
@@ -766,7 +815,7 @@ const MORE = CASES.filter(c => c.more);
 
 const EXTRA = {"x-goias-social": [640, 360], "x-sandella": [640, 905]};
 const MARQUEE = [
-  [["br/pais/kv", "dia-dos-pais"], ["br/volta/capa", "volta-motociclistica"], ["p2/f2-kv-a", "paz-no-futebol"], ["br/x/mainha-06-post", "mainha"], ["br/imob/expand-01", "imobiliario"], ["x-goias-social"], ["p1/coop-medicos", "unimed-ia"], ["br/x/sanchips-01", "san-chips"], ["p3/grecia-feed", "imobiliario"]],
+  [["br/pais/kv", "dia-dos-pais"], ["br/volta/capa", "volta-motociclistica"], ["p2/f2-kv-a", "paz-no-futebol"], ["br/x/mainha-06-post", "mainha"], ["br/imob/expand-01", "imobiliario"], ["x-goias-social"], ["p1/coop-medicos", "unimed-ia"], ["br/x/v-unigraos-a", "uni-graos"], ["p3/grecia-feed", "imobiliario"]],
   [["br/pais/jornal", "dia-dos-pais"], ["br/volta/camiseta-4", "volta-motociclistica"], ["p2/poplist", "paz-no-futebol"], ["br/x/verao-07", "vai-ter-verao"], ["br/imob/sf4-02", "imobiliario"], ["x-sandella"], ["br/x/microx-10", "micro-x"], ["p1/water-gym", "unimed-ia"], ["p4/fist-flatlay", "ntshop"]],
   [["br/pais/out-pf", "dia-dos-pais"], ["br/volta/selo", "volta-motociclistica"], ["p2/f2-screen-goias", "paz-no-futebol"], ["br/x/mainha-08-post", "mainha"], ["br/imob/stand-02", "imobiliario"], ["p1/heart-drink", "unimed-ia"], ["br/x/marinho-04", "marinho"], ["br/volta/livreto-3", "volta-motociclistica"], ["p3/frankfurt-story", "imobiliario"]],
 ];
@@ -813,7 +862,7 @@ document.getElementById("bento").innerHTML = MAIN.map(c => `
 
 document.getElementById("more").innerHTML = MORE.map(c => `
   <a class="mini" href="#${c.id}">
-    <div class="frame"><div class="media">${media(c.cover, c.short)}</div></div>
+    <div class="frame"><div class="media">${media(c.cover, c.short, { auto: true })}</div></div>
     <div class="card-meta">
       <div class="slug"><span>${esc(c.client)}</span>${c.slug.map(s => `<span>${esc(s)}</span>`).join("")}</div>
       <h3>${esc(c.title)}</h3>
@@ -879,7 +928,7 @@ function renderBlock(b, c) {
     case "stagger":
       return `<div class="blk"><div class="blk-stagger">${staggerHTML(b.items, alt)}</div>${cap}</div>`;
     case "quad":
-      return `<div class="blk"><div class="blk-quad">${b.ks.map(k => `<figure class="rv">${media(k, alt, { cls: "shot" })}</figure>`).join("")}</div>${cap}</div>`;
+      return `<div class="blk"><div class="blk-quad"${b.cols ? ` style="--cols:${b.cols}"` : ""}>${b.ks.map(k => `<figure class="rv">${media(k, alt, { cls: "shot" })}</figure>`).join("")}</div>${cap}</div>`;
     case "overlap":
       return `<div class="blk"><div class="blk-overlap ${b.side === "left" ? "left" : ""}"><div class="ov" style="--sw:${b.sw || 30}%">
         <figure class="big rv" style="margin:0">${media(b.big, alt, { cls: "shot" })}</figure>
@@ -963,6 +1012,18 @@ caseEl.addEventListener("click", e => {
   const a = e.target.closest("a[data-close]");
   if (a) { e.preventDefault(); closeCase(); document.getElementById("contato").scrollIntoView(); }
 });
+
+/* Showcase iframe: play only while on screen */
+(() => {
+  const f = document.getElementById("sc-iframe");
+  if (!f) return;
+  let vis = false;
+  const send = () => { try { f.contentWindow.postMessage({ type: "vis", visible: vis && !document.hidden }, "*"); } catch (e) {} };
+  f.addEventListener("load", send);
+  document.addEventListener("visibilitychange", send);
+  if ("IntersectionObserver" in window) new IntersectionObserver(es => { vis = es[0].isIntersecting; send(); }, { threshold: 0.35 }).observe(f);
+  else { vis = true; send(); }
+})();
 route();
 </script>
 
