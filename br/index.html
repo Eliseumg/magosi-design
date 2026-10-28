@@ -190,6 +190,9 @@ p { margin: 0; }
 .caps div { display: grid; align-content: start; gap: 10px; border-top: 2px solid var(--accent); padding-top: 18px; min-width: 0; }
 .caps h3 { font-size: var(--step-1); }
 .caps p { color: var(--muted); }
+.caps.caps-6 { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px 40px; }
+@media (max-width: 980px) { .caps.caps-6 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .caps.caps-6 { grid-template-columns: 1fr; } }
 .toolbelt { margin-top: 48px; color: var(--muted); }
 .toolbelt strong { color: var(--fg); font-weight: 650; }
 
@@ -462,12 +465,13 @@ p { margin: 0; }
   <section class="section" id="habilidades">
     <div class="wrap">
       <div class="section-head"><h2>O que eu faço</h2></div>
-      <div class="caps">
-        <div><h3>Direção de arte e campanha</h3><p>Key visual, campanha 360°, mídia exterior e de estádio, direção de foto.</p></div>
-        <div><h3>Marca e identidade</h3><p>Logo, sub-marcas para programas internos, identidade de evento, manual, estampa.</p></div>
-        <div><h3>Imagem com IA</h3><p>Geração de imagem e vídeo no Flow e no Magnific, upscale, composição e retoque.</p></div>
-        <div><h3>Motion e vídeo</h3><p>Motion no After Effects e edição no Premiere: anúncio animado, Reels, Stories e vídeo de marca.</p></div>
-        <div><h3>Digital e performance</h3><p>Anúncio para captar lead, landing page, RD Station (CRM e automação de marketing) e loja Shopify.</p></div>
+      <div class="caps caps-6">
+        <div><h3>Ideia e conceito</h3><p>Crio a ideia e o conceito da campanha, do briefing à apresentação para o cliente.</p></div>
+        <div><h3>Key visual e desdobramentos</h3><p>O key visual e o sistema que leva a campanha para todas as mídias: outdoor, ponto de venda, eventos, digital e mídia paga.</p></div>
+        <div><h3>Direção de produção</h3><p>Direção de foto, acompanhamento de filme com a produtora e contato com gráficas e fornecedores.</p></div>
+        <div><h3>Equipe e qualidade</h3><p>Oriento a equipe de arte, reviso e aprovo peças e cuido da consistência da marca em tudo que sai.</p></div>
+        <div><h3>Marca e identidade</h3><p>Identidade visual, sub-marcas para programas internos, identidade de evento e manual de marca.</p></div>
+        <div><h3>Motion, vídeo e IA</h3><p>Motion no After Effects, edição no Premiere e imagem com IA (Flow e Magnific) quando a ideia não dá para fotografar.</p></div>
       </div>
       <p class="toolbelt"><strong>Ferramentas:</strong> Photoshop, Illustrator, InDesign, After Effects, Premiere Pro, Figma, Flow, Magnific, Claude, RD Station, Shopify.</p>
     </div>
