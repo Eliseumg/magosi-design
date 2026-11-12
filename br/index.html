@@ -136,7 +136,7 @@ p { margin: 0; }
 /* Sections */
 .section .wrap { padding-block: 88px; }
 /* ice-white break for the project grid */
-.light { --bg: #F1F3F6; --bg-2: #E2E7EE; --fg: #1D2738; --muted: #5A6578; --line: rgba(29, 39, 56, .14); --crop: rgba(29, 39, 56, .38); --shadow: rgba(29, 39, 56, .30); background: var(--bg); color: var(--fg); }
+.light { --bg: #EEEBE3; --bg-2: #E3DED2; --fg: #1D2738; --muted: #5C6270; --line: rgba(29, 39, 56, .14); --crop: rgba(29, 39, 56, .38); --shadow: rgba(29, 39, 56, .30); background: var(--bg); color: var(--fg); }
 .btn.alt { background: var(--fg); color: var(--bg); border-color: var(--fg); }
 .btn.alt:hover { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
 .section-head { display: grid; gap: 14px; margin-bottom: 44px; max-width: 46rem; }
@@ -368,6 +368,12 @@ p { margin: 0; }
 @media (min-width: 900px) { .card.w12 { grid-column: span 12; } .card.w12 .media { height: clamp(360px, 36vw, 520px); } }
 @media (max-width: 820px) { .nav .lang + .resume-link + .btn { margin-left: 8px; } }
 .vid-inset { width: 100%; aspect-ratio: 9 / 16; display: block; background: #000; border-radius: 3px; box-shadow: 0 30px 60px -28px var(--shadow); }
+/* Interactive portrait: pixel-art bust that turns toward the cursor, on the same cream as the work grid */
+.portrait-sec .wrap { display: flex; justify-content: center; padding-top: 72px; }
+.portrait-sec + .section .wrap { padding-top: 40px; }
+.pf-portrait { position: relative; width: clamp(280px, 34vw, 420px); aspect-ratio: 1; }
+.pf-portrait canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: pan-y; }
+@media (max-width: 620px) { .portrait-sec .wrap { padding-top: 48px; } }
 </style>
 </head>
 <body>
@@ -413,6 +419,10 @@ p { margin: 0; }
       <div class="belt rev tools" style="--dur:55s"><div class="belt-track" id="tools"></div></div>
     </div>
   </div>
+
+  <section class="light portrait-sec" aria-label="Retrato">
+    <div class="wrap"><div class="pf-portrait"><canvas id="pf-portrait" role="img" aria-label="Retrato de Eliseu Martins em pixel art. A cabeça vira na direção do cursor."></canvas></div></div>
+  </section>
 
   <section class="section light" id="trabalhos">
     <div class="wrap">
@@ -1088,6 +1098,196 @@ caseEl.addEventListener("click", e => {
   else { vis = true; send(); }
 })();
 route();
+
+/* Interactive portrait. 17 head poses taken from a video, drawn as 1-bit pixels. */
+const PORTRAIT_META = {"order":["c","l1","l2","r1","r2","u1","u2","d1","d2","ul1","ul2","ur1","ur2","dl1","dl2","dr1","dr2"],"n":128,"meta":{"c":{"fx":0.511,"fy":0.487,"fw":0.409},"l1":{"fx":0.46,"fy":0.476,"fw":0.426},"l2":{"fx":0.484,"fy":0.485,"fw":0.426},"r1":{"fx":0.522,"fy":0.461,"fw":0.431},"r2":{"fx":0.531,"fy":0.468,"fw":0.444},"u1":{"fx":0.521,"fy":0.422,"fw":0.425},"u2":{"fx":0.52,"fy":0.411,"fw":0.431},"d1":{"fx":0.459,"fy":0.549,"fw":0.433},"d2":{"fx":0.463,"fy":0.583,"fw":0.46},"ul1":{"fx":0.51,"fy":0.428,"fw":0.471},"ul2":{"fx":0.48,"fy":0.381,"fw":0.441},"ur1":{"fx":0.49,"fy":0.433,"fw":0.447},"ur2":{"fx":0.483,"fy":0.426,"fw":0.426},"dl1":{"fx":0.523,"fy":0.499,"fw":0.475},"dl2":{"fx":0.482,"fy":0.512,"fw":0.451},"dr1":{"fx":0.488,"fy":0.505,"fw":0.454},"dr2":{"fx":0.529,"fy":0.553,"fw":0.406}}};
+function createPortrait(canvas, userOpts) {
+  const o = Object.assign({ src: "", style: "pixel", grid: 96, light: "lateral", outline: true, ink: "#EEEBE3", bg: "#232F42", alive: true, torch: true, fade: 0, isPaused: null, onPose: null }, userOpts);
+  const D = PORTRAIT_META, N = D.n, K = D.order.length;
+  const IDX = Object.fromEntries(D.order.map((k, i) => [k, i]));
+  const DIRS = ["r", "dr", "d", "dl", "l", "ul", "u", "ur"];
+  const B4 = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5];
+  let HI = 8; // pixels do canvas por célula; recalculado pelo tamanho na tela
+  const cell = document.createElement("canvas"), cellCtx = cell.getContext("2d");
+  const ctx = canvas.getContext("2d");
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const clamp = (v, a, b) => v < a ? a : v > b ? b : v;
+  const rgb = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
+
+  let img = null, G = 0, poses = [], src, hash, V, out;
+  let target = 0, shown = -1, prog = 1, tStart = 0, dur = 700, level = 0;
+  let tx = 0, ty = 0, px = 0, py = 0, lastMove = -1e9, gx = -99, gy = -99, over = false, torchA = 0;
+  let running = true, visible = true, lastDraw = 0, raf = 0;
+
+  function prepare() {
+    G = o.grid;
+    const s = document.createElement("canvas"); s.width = G * K; s.height = G;
+    const sc = s.getContext("2d", { willReadFrequently: true });
+    sc.imageSmoothingEnabled = true; sc.imageSmoothingQuality = "high";
+    for (let j = 0; j < K; j++) sc.drawImage(img, j * N, 0, N, N, j * G, 0, G, G);
+    const d = sc.getImageData(0, 0, G * K, G).data;
+    poses = D.order.map((k, j) => {
+      const T = new Float32Array(G * G), M = new Uint8Array(G * G), R = new Uint8Array(G * G), ramp = new Float32Array(G);
+      for (let y = 0; y < G; y++) for (let x = 0; x < G; x++) {
+        const p = (y * G * K + j * G + x) * 4;
+        T[y * G + x] = d[p] / 255; M[y * G + x] = d[p + 1] > 127 ? 1 : 0;
+      }
+      for (let y = 0; y < G; y++) for (let x = 0; x < G; x++) {
+        const i = y * G + x; if (!M[i]) continue;
+        if ((x > 0 && !M[i - 1]) || (x < G - 1 && !M[i + 1]) || (y > 0 && !M[i - G]) || (y < G - 1 && !M[i + G])) R[i] = 1;
+      }
+      const m = D.meta[k];
+      for (let x = 0; x < G; x++) { let r = clamp(.5 - ((x + .5) / G - m.fx) / m.fw * 1.1, 0, 1); r = r * r * (3 - 2 * r); ramp[x] = .42 + .85 * r; }
+      return { T, M, R, ramp };
+    });
+    const fresh = !src;
+    src = new Int16Array(G * G).fill(fresh && !reduce ? -1 : target);
+    hash = new Float32Array(G * G); for (let i = 0; i < hash.length; i++) hash[i] = Math.random();
+    V = new Float32Array(G * G);
+    cell.width = cell.height = G;
+    out = cellCtx.createImageData(G, G);
+    fit();
+    if (fresh && !reduce) { prog = 0; tStart = performance.now(); dur = 700; } else prog = 1;
+  }
+
+  // o canvas usa um número inteiro de pixels por célula, para o pontilhado ficar regular
+  function fit() {
+    const w = canvas.getBoundingClientRect().width || 480, dpr = Math.min(2, window.devicePixelRatio || 1);
+    HI = Math.max(3, Math.ceil(w * dpr / G));
+    if (canvas.width !== G * HI) canvas.width = canvas.height = G * HI;
+    lastDraw = 0;
+  }
+
+  function pick(x, y) {
+    const m = Math.hypot(x, y);
+    if (level === 0) { if (m > .18) level = 1; }
+    else if (level === 1) { if (m < .13) level = 0; else if (m > .58) level = 2; }
+    else if (m < .5) level = 1;
+    if (level === 0) return 0;
+    const s = ((Math.round(Math.atan2(y, x) / (Math.PI / 4)) % 8) + 8) % 8;
+    return IDX[DIRS[s] + level];
+  }
+
+  function onMove(e) {
+    const r = canvas.getBoundingClientRect();
+    if (!r.width) return;
+    // alcance até 80% do caminho entre o centro do retrato e a borda da janela, em cada lado
+    const cx = r.left + r.width / 2, cy = r.top + r.height / 2, dx = e.clientX - cx, dy = e.clientY - cy;
+    const rx = Math.max((dx < 0 ? cx : window.innerWidth - cx) * .8, r.width * .3);
+    const ry = Math.max((dy < 0 ? cy : window.innerHeight - cy) * .8, r.height * .3);
+    tx = clamp(dx / rx, -1, 1);
+    ty = clamp(dy / ry, -1, 1);
+    gx = (e.clientX - r.left) / r.width; gy = (e.clientY - r.top) / r.height;
+    over = gx > -.15 && gx < 1.15 && gy > -.15 && gy < 1.15;
+    lastMove = performance.now();
+  }
+
+  function compute(now) {
+    const lateral = o.light === "lateral", alive = o.alive && !reduce, outline = o.outline;
+    const a = rgb(o.ink), b = rgb(o.bg), inv = a[0] + a[1] + a[2] < b[0] + b[1] + b[2];
+    const ts = Math.floor(now / 170) * .17, f0 = 1 - o.fade;
+    const rad = .2 * G, k2 = 1 / (2 * rad * rad), cx = gx * G, cy = gy * G, useTorch = torchA > .01;
+    for (let y = 0; y < G; y++) {
+      const vv = y / G;
+      for (let x = 0; x < G; x++) {
+        const i = y * G + x, s = src[i];
+        if (s < 0) { V[i] = 0; continue; }
+        const P = poses[s];
+        if (!P.M[i]) { V[i] = 0; continue; }
+        if (outline && P.R[i]) { V[i] = 1; continue; }
+        const raw = P.T[i];
+        let t = lateral ? raw * P.ramp[x] : raw;
+        t = (t - .1) / .8;
+        if (alive) { const u = x / G; t += .07 * Math.sin(u * 9 + ts * 1.3) * Math.sin(vv * 7 - ts * .9 + u * 3); }
+        if (useTorch) { const dx = x - cx, dy = y - cy; t += torchA * Math.exp(-(dx * dx + dy * dy) * k2) * (.22 + .6 * raw); }
+        t = t < 0 ? 0 : t > 1 ? 1 : t;
+        if (outline && t < .125) t = .125;
+        let v = inv ? 1 - t : t; // tinta escura em papel claro: a tinta marca a sombra
+        if (o.fade && vv > f0) v *= 1 - (vv - f0) / o.fade; // a base do busto se dissolve no fundo
+        V[i] = v;
+      }
+    }
+  }
+
+  function draw() {
+    const ink = rgb(o.ink), bg = rgb(o.bg);
+    if (o.style === "pixel") {
+      const d = out.data;
+      for (let y = 0; y < G; y++) for (let x = 0; x < G; x++) {
+        const i = y * G + x, q = Math.round(V[i] * 8) / 8;
+        const c = q > (B4[(y & 3) * 4 + (x & 3)] + .5) / 16 ? ink : bg, p = i * 4;
+        d[p] = c[0]; d[p + 1] = c[1]; d[p + 2] = c[2]; d[p + 3] = 255;
+      }
+      cellCtx.putImageData(out, 0, 0);
+      ctx.imageSmoothingEnabled = false;
+      ctx.drawImage(cell, 0, 0, canvas.width, canvas.height);
+      return;
+    }
+    ctx.fillStyle = o.bg; ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = o.ink; ctx.beginPath();
+    for (let y = 0; y < G; y++) for (let x = 0; x < G; x++) {
+      const v = V[y * G + x]; if (v < .04) continue;
+      if (o.style === "dots") {
+        const r = Math.sqrt(v) * HI * .66, X = (x + .5) * HI, Y = (y + .5) * HI;
+        ctx.moveTo(X + r, Y); ctx.arc(X, Y, r, 0, 6.2832);
+      } else {
+        const h = v * HI * .92; ctx.rect(x * HI, y * HI + (HI - h) / 2, HI + .5, h);
+      }
+    }
+    ctx.fill();
+  }
+
+  function frame(now) {
+    raf = requestAnimationFrame(frame);
+    if (!running || !visible || !img || (o.isPaused && o.isPaused())) return;
+    if (now - lastDraw < 62) return;
+    lastDraw = now;
+    const idle = now - lastMove > 3500;
+    if (idle && o.alive && !reduce) { const t = now / 1000; tx = .82 * Math.sin(t * .5); ty = .6 * Math.sin(t * .37 + 1.3); }
+    px += (tx - px) * .4; py += (ty - py) * .4;
+    const p = pick(px, py);
+    if (p !== target) { target = p; prog = 0; tStart = now; dur = 150; }
+    if (prog < 1) {
+      prog = reduce ? 1 : Math.min(1, (now - tStart) / dur);
+      for (let i = 0; i < src.length; i++) if (src[i] !== target && hash[i] <= prog) src[i] = target;
+    }
+    if (target !== shown) { shown = target; if (o.onPose) o.onPose(D.order[target]); }
+    torchA += ((over && o.torch && !idle ? 1 : 0) - torchA) * .3;
+    compute(now); draw();
+  }
+
+  const io = "IntersectionObserver" in window ? new IntersectionObserver(es => { visible = es[0].isIntersecting; }, { threshold: .05 }) : null;
+  if (io) io.observe(canvas);
+  const ro = "ResizeObserver" in window ? new ResizeObserver(() => { if (src) fit(); }) : null;
+  if (ro) ro.observe(canvas);
+  const onVis = () => { running = !document.hidden; };
+  document.addEventListener("visibilitychange", onVis);
+  window.addEventListener("pointermove", onMove, { passive: true });
+  window.addEventListener("pointerdown", onMove, { passive: true });
+
+  img = new Image();
+  img.onload = () => { prepare(); raf = requestAnimationFrame(frame); };
+  img.src = o.src;
+
+  return {
+    set(patch) {
+      const re = ("grid" in patch && patch.grid !== o.grid) || ("style" in patch && patch.style !== o.style);
+      Object.assign(o, patch);
+      if (re && src) prepare();
+      lastDraw = 0;
+    },
+    destroy() {
+      cancelAnimationFrame(raf); if (io) io.disconnect(); if (ro) ro.disconnect();
+      document.removeEventListener("visibilitychange", onVis);
+      window.removeEventListener("pointermove", onMove); window.removeEventListener("pointerdown", onMove);
+    }
+  };
+}
+createPortrait(document.getElementById("pf-portrait"), {
+  src: "/assets/portrait/sprite.png", style: "pixel", grid: 128, light: "natural", outline: false,
+  ink: "#1D2738", bg: "#EEEBE3", alive: true, torch: false, fade: .16,
+  isPaused: () => !caseEl.hidden
+});
 </script>
 
 </body>
